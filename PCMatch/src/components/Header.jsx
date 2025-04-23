@@ -1,12 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import './Header.module.css'
 
 export default function Header() {
-    return (
-        <header>
-            <nav>
-            <Link to="/" className="hover:underline">Home</Link>
-            </nav>
-        </header>
-    )
+  return (
+    <header className="header">
+      <div className="header-title">Meine App</div>
+      <nav>
+        <Link to="/" className="home-button">Home</Link>    
+      </nav>
+    </header>
+  );
 }
