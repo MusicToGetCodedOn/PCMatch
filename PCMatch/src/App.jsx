@@ -6,6 +6,7 @@ import './App.css'
 import Graphicscards from './data/video-card.json'
 import Card from './components/VideoCardCard'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -13,17 +14,11 @@ function App() {
 
   return (
     <>
-        <Header />
-     
+      <Header />
     <main>  
       <Outlet />
     </main>
-
-    
-    
-
-
-
+    <Footer />
     </>
   )
 }
