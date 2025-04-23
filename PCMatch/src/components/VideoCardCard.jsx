@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Graphicscards from '../data/video-card.json';
-import styles from './Card.module.css';
+import styles from './VideoCardCard.module.css'
 
-export default function Card() {
+export default function GpuCard() {
   const [visibleCards, setVisibleCards] = useState(12);
 
   

@@ -5,9 +5,14 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-       <h1 className={styles.headerTitle}>Meine App</h1>
-      <nav>
+       <h1 className={styles.headerTitle}>PCMatch</h1>
+      <br />
+      <nav className={styles.nav}>
+      <Link to="/builder/" className={styles.homeButton}>Builder</Link>
+      <Link to="/completedbuilds/" className={styles.homeButton}>Completed Builds</Link>
+      <Link to="/products/" className={styles.homeButton}>Products</Link>
       <Link to="/" className={styles.homeButton}>Home</Link>
+      
     
       </nav>
     </header>

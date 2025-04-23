@@ -28,9 +28,14 @@
     padding: 0.5rem 1rem;
     text-decoration: none;
     border-radius: 6px;
+    margin-right: 5%;
   }
   
   .homeButton:hover {
     background-color: #cf1dd8;
   }
-  
+  .nav{
+    display: flex;
+    justify-content: space-evenly;
+    width: 45%;
+  }
