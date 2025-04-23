@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+.Box{
+  margin: 2%;
+  padding: 2%;
+  border: solid, black;
+}
