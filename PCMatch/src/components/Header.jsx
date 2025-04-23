@@ -1,10 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import styles from './Header.module.css';
 
 export default function Header() {
-    return (
-        <>
-        
-        </>
-    )
+
+  return (
+    <header className={styles.header}>
+       <h1 className={styles.headerTitle}>Meine App</h1>
+      <nav>
+      <Link to="/" className={styles.homeButton}>Home</Link>
+    
+      </nav>
+    </header>
+  );
 }

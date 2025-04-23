@@ -6,6 +6,7 @@
   }
 .Card{
     border: purple, solid;
+
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 5%;
@@ -13,4 +14,6 @@
 }
 button{
     margin-bottom: 5%;
+
+
 }
