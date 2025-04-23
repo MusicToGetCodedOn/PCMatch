@@ -7,7 +7,7 @@ export default function Card() {
 
   
   const loadMore = () => {
-    setVisibleCards(prev => prev + 10); 
+    setVisibleCards(prev => prev + 12); 
   };
 
   return (

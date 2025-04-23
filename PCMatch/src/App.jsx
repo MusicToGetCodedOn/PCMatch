@@ -13,20 +13,16 @@ function App() {
 
   return (
     <>
-    <main>
-      <div>
         <Header />
-      </div>
- 
-      <Card />
+     
+    <main>  
+      <Outlet />
     </main>
 
     
     
 
-      
-      <Outlet />
-     
+
 
     </>
   )
