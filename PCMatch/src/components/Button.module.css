@@ -1,26 +1,20 @@
-:root {
-    --button-bg-color: var(--primary);
-    --button-hover-bg-color: var(--primary-hover);
-    --button-fg-color: #b025eb;
-}
-
 .button {
-    background-color: var(--button-bg-color);
-    color: var(--button-fg-color);
     padding: 10px 20px;
+    background-color: #b025eb;
+    color: rgb(43, 42, 42);
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
-}
+    transition: background-color 0.3s ease;
+  }
 
-.button:hover {
-    background-color: var(--button-hover-bg-color);
-    transform: scale(1.05);
-}
-
-.button:active {
-    transform: scale(1);
-}
+  .button:hover {
+    background-color: #cf1dd8;
+  }
+  
+  .button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
