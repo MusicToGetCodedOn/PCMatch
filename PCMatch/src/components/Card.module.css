@@ -1,3 +1,16 @@
+.Grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 1rem;
+  }
 .Card{
     border: purple, solid;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 5%;
+    
+}
+button{
+    margin-bottom: 5%;
 }
