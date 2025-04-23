@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GpuCard from "../components/VideoCardCard";
 import gpus from "../data/video-card.json";
+import CaseCard from "../components/CasesCard";
 
 
 export default function ProductsRoute(){
@@ -8,6 +9,6 @@ export default function ProductsRoute(){
 
     const filteredProducts = filter === 'ALL'
     return <main>
-        <GpuCard />
+        <CaseCard />
     </main>
 }
