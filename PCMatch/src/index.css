@@ -4,12 +4,23 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color-text-light);
+  background-color: var(--color-bg-surface);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+    --color-bg-primary: #1d1d1e;
+    --color-bg-surface: #242424;
+    --color-accent-main: #cf1dd8;
+    --color-accent-secondary: #b025eb;
+    --color-accent-soft: #9a65c7;
+    --color-accent-alt: #1f66e5;
+    --color-highlight: #7720e9;
+    --color-text-light: #eae9f2;
+    --color-text-muted: #72677e;
 }
 

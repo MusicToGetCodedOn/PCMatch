@@ -1,0 +1,21 @@
+.filterBtn{
+    background-color: var(--color-accent-main);
+    padding-top:.5%;
+    padding-bottom: .5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 10px;
+    border: none;
+    margin-right: 2%;
+    cursor: pointer;
+    transition: .4s;
+}
+.filterBtn:hover{
+background-color: var(--color-accent-secondary);
+transition: .4s;
+transform: scale(1.05);
+}
+.filterBtnActive {
+    background-color: var(--color-highlight);
+  }
+

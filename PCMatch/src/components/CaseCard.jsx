@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Cases from '../data/case.json';
-import styles from './VideoCardCard.module.css'
+import styles from './VideoCardCard.module.css';
+import Button from './Button';
 
 export default function CaseCard() {
     const [visibleCards, setVisibleCards] = useState(12);
@@ -10,8 +11,16 @@ export default function CaseCard() {
       setVisibleCards(prev => prev + 12); 
     };
 
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    };
+
     return (
         <div>
+          <h2>Gehäuse</h2>
         <div className={styles.Grid}> 
       {Cases.slice(0, visibleCards).map((shell) => (
         <CardItem key={shell.name} data={shell} />
@@ -19,15 +28,18 @@ export default function CaseCard() {
         </div>
     
           {visibleCards < Cases.length && (
-            <button onClick={loadMore} className={styles.loadMoreBtn}>
+            <Button onClick={loadMore} className={styles.loadMoreBtn}>
               mehr anzeigen
-            </button>
+            </Button>
           )}
+           <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
+                  Nach oben
+                </Button>
         </div>
       );
 }
 
-// Unterkomponente für jede einzelne Karte
+
 function CardItem({ data }) {
   const [showMore, setShowMore] = useState(false);
 
@@ -46,9 +58,9 @@ function CardItem({ data }) {
         </>
       )}
 
-      <button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
+      <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
         {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
-      </button>
+      </Button>
     </article>
   );
 }

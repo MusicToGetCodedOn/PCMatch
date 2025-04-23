@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Processor from '../data/cpu.json';
 import styles from './VideoCardCard.module.css'
+import Button from './Button';
+
 
 export default function CpuCard() {
   const [visibleCards, setVisibleCards] = useState(12);
@@ -9,11 +11,18 @@ export default function CpuCard() {
   const loadMore = () => {
     setVisibleCards(prev => prev + 12); 
   };
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
 
   return (
     <div>
-        
+        <h2>Prozessoren</h2>
         <div className={styles.Grid}> 
       {Processor.slice(0, visibleCards).map((processor) => (
         <CardItem key={processor.name} data={processor} />
@@ -21,10 +30,13 @@ export default function CpuCard() {
         </div>
 
       {visibleCards < Processor.length && (
-        <button onClick={loadMore} className={styles.loadMoreBtn}>
+        <Button onClick={loadMore} className={styles.loadMoreBtn}>
           mehr anzeigen
-        </button>
+        </Button>
       )}
+       <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
+              Nach oben
+            </Button>
     </div>
   );
 }
@@ -51,12 +63,12 @@ function CardItem({ data }) {
             {data.graphics && data.graphics !== 'null' ? data.graphics : 'Keine integrierte Grafik'}
           </p>
           <p><strong>Multithreading:</strong> {data.smt ? "ja" : "nein"}</p>
-        </>
+          </>
       )}
 
-      <button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
+      <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
         {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
-      </button>
+      </Button>
     </article>
   );
 }

@@ -29,10 +29,13 @@
     text-decoration: none;
     border-radius: 6px;
     margin-right: 5%;
+    transition: .4s;
   }
   
   .homeButton:hover {
     background-color: #cf1dd8;
+    transition: .4s;
+    transform: scale(1.05);
   }
   .nav{
     display: flex;

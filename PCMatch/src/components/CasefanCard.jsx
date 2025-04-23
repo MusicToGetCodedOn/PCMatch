@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Graphicscards from '../data/video-card.json';
+import CaseFans from '../data/case-fan.json';
 import styles from './VideoCardCard.module.css'
 import Button from './Button';
 import { div } from 'framer-motion/client';
 
-export default function GpuCard() {
+export default function CasefanCard() {
   const [visibleCards, setVisibleCards] = useState(12);
 
   
@@ -21,14 +21,14 @@ export default function GpuCard() {
 
   return (
     <div>
-      <h2>Grafikkarten</h2>
+      <h2>Lüfter</h2>
         <div className={styles.Grid}> 
-      {Graphicscards.slice(0, visibleCards).map((graphicscard) => (
-        <CardItem key={graphicscard.name} data={graphicscard} />
+      {CaseFans.slice(0, visibleCards).map((casefan) => (
+        <CardItem key={casefan.name} data={casefan} />
       ))}
         </div>
 
-      {visibleCards < Graphicscards.length && (
+      {visibleCards < CaseFans.length && (
         
         <Button onClick={loadMore} className={styles.loadMoreBtn}>
           mehr anzeigen
@@ -52,16 +52,19 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Chipset: </strong>{data.chipset}</p>
       <p><strong>Verkaufspreis: </strong>${data.price}</p>
+      <p><strong>Grösse: </strong>{data.size} mm</p>
 
       {showMore && (
         <>
-          <p><strong>Speicher:</strong> {data.memory} GB</p>
-          <p><strong>Standart Taktfrequenz:</strong> {data.core_clock} Mhz</p>
-          <p><strong>Übertaktet:</strong> {data.boost_clock} Mhz</p>
-          <p><strong>Farbe:</strong> {data.color}</p>
-          <p><strong>Länge</strong> {data.length} mm</p>
+          <p><strong>Farbe: </strong>{data.color} </p>
+          <p>
+          <strong>Rpm:</strong>{""}
+            {data.rpm && data.rpm !== 'null' ? data.rpm : 'n/A'}
+          </p>
+          <p><strong>Airflow:</strong> {data.airflow} CFM</p>
+          <p><strong>lautstärke:</strong> {data.noise_level}dB</p>
+          <p><strong>PWM:</strong> {data.pwm ? "ja" : "nein"}</p>
         </>
       )}
 
