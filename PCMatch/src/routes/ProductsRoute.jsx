@@ -4,7 +4,7 @@ import CpuCard from "../components/CpuCard";
 import CaseCard from "../components/CaseCard";
 import Button from "../components/Button";
 import styles from './ProductsRoute.module.css'
-import CasefanCard from "../components/Casefan";
+import CasefanCard from "../components/CasefanCard";
 
 
 
