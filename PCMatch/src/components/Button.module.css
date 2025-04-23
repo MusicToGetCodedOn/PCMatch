@@ -1,0 +1,26 @@
+:root {
+    --button-bg-color: var(--primary);
+    --button-hover-bg-color: var(--primary-hover);
+    --button-fg-color: #b025eb;
+}
+
+.button {
+    background-color: var(--button-bg-color);
+    color: var(--button-fg-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--button-hover-bg-color);
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(1);
+}

@@ -1,3 +1,10 @@
+import styles from './Button.module.css';
+
 export default function Button() {
-    return
+    const classes = styles.button
+    return (
+        <button className={classes}>
+
+        </button>
+    )
 }
