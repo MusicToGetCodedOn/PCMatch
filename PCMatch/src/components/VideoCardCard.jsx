@@ -20,7 +20,7 @@ export default function GpuCard({ searchQuery = "" }) {
 
 
   const filteredCards = Graphicscards.filter(card =>
-    card.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    card.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
     card.chipset.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (

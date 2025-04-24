@@ -11,7 +11,8 @@
     transition: .4s;
 }
 .filterBtn:hover{
-background-color: var(--color-accent-secondary);
+background-color: var(--color-accent-soft);
+border: solid, var(--color-accent-secondary);
 transition: .4s;
 transform: scale(1.05);
 }
@@ -29,3 +30,8 @@ transform: scale(1.05);
     color: var(--color-text-light);
     background-color: var(--color-bg-primary);
   }
+img{
+    width: 90px;
+    border-radius: 10px;
+
+}

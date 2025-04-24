@@ -7,6 +7,7 @@ import styles from './ProductsRoute.module.css'
 import CasefanCard from "../components/CasefanCard";
 import CpuCoolerCard from "../components/CpuCoolerCard";
 import IntHardCard from "../components/IntDriveCard";
+import cpucooler from '../assets/cpu_cooler.jpg';
 
 
 
@@ -63,6 +64,7 @@ export default function ProductsRoute(){
                     className={`${styles.filterBtn} ${filter === 'CpuCooler' ? styles.filterBtnActive : ''}`}
                     onClick={() => setFilter('CpuCooler')}
                 >
+                    <img src={cpucooler} alt="cpu cooler"/><br />
                     CPU Kühler
                 </button>
                 <button

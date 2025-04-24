@@ -62,7 +62,7 @@ function CardItem({ data }) {
           <p><strong>Farbe:</strong> {data.color}</p>
         </>
       )}
-      <Button onClick={() => window.open("https://www.digitec.ch/de", "_blank") }>
+      <Button onClick={() => window.open("https://www.digitec.ch/de/s1/tag/gehaeuse-524", "_blank") }>
   Kaufen
 </Button>
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
