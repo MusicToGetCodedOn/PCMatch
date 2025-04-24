@@ -1,3 +1,5 @@
 export default function MotherboardRoute() {
-    return
+    return <main>
+        
+    </main>
 }

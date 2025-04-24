@@ -1,3 +1,5 @@
 export default function WirelessRoute() {
-    return
+    return <main>
+        
+    </main>
 }

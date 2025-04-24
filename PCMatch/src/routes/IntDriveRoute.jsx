@@ -1,3 +1,5 @@
 export default function IntDriveRoute() {
-    return
+    return <main>
+        
+    </main>
 }

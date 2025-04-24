@@ -1,3 +1,5 @@
 export default function CaseRoute() {
-    return
+    return <main>
+        
+    </main>
 }

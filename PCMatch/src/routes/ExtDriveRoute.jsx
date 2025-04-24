@@ -1,3 +1,5 @@
 export default function ExtDriveRoute() {
-    return
+    return <main>
+        
+    </main>
 }

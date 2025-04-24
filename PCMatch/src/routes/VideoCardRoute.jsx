@@ -1,3 +1,5 @@
 export default function VideoCardRoute() {
-    return
+    return <main>
+        
+    </main>
 }

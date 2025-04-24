@@ -1,3 +1,5 @@
 export default function CaseFanRoute() {
-    return
+    return <main>
+        
+    </main>
 }

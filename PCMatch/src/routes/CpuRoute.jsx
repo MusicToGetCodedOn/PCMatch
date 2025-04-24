@@ -1,3 +1,5 @@
 export default function CpuRoute() {
-    return
+    return <main>
+        
+    </main>
 }

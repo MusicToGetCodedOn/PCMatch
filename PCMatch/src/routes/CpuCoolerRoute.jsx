@@ -1,3 +1,5 @@
 export default function CpuCoolerRoute() {
-    return
+    return <main>
+        
+    </main>
 }

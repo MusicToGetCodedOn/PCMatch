@@ -1,3 +1,5 @@
 export default function OsRoute() {
-    return
+    return <main>
+        
+    </main>
 }

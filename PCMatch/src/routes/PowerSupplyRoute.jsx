@@ -1,3 +1,5 @@
 export default function PowerSupplyRoute() {
-    return
+    return <main>
+        
+    </main>
 }

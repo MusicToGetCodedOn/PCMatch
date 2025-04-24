@@ -1,3 +1,5 @@
 export default function WiredRoute() {
-    return
+    return <main>
+        
+    </main>
 }

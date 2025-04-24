@@ -1,3 +1,5 @@
 export default function MemoryRoute() {
-    return
+    return <main>
+        
+    </main>
 }
