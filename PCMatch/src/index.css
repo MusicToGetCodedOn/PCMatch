@@ -24,3 +24,100 @@
     --color-text-muted: #72677e;
 }
 
+/* === GRID-ANPASSUNG FÜR KARTEN === */
+@media (max-width: 1024px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .Grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+/* === CARD ANPASSUNG === */
+@media (max-width: 768px) {
+  .Card {
+    padding: 4%;
+    font-size: 0.95rem;
+  }
+
+  .Card:hover {
+    transform: scale(1.02); /* Weniger starkes Hover bei Mobile */
+  }
+}
+
+/* === HEADER ANPASSUNG === */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    height: auto;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .homeButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .headerTitle {
+    font-size: 1.2rem;
+  }
+}
+/* === FOOTER ANPASSUNG === */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+}
+
+/* === BUTTONS ALLGEMEIN === */
+@media (max-width: 480px) {
+  button,
+  .loadMoreBtn,
+  .showMoreBtn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .filterBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    margin-right: 1%;
+  }
+
+  .searchInput {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filterBtn {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .searchInput {
+    font-size: 0.9rem;
+  }
+}

@@ -56,3 +56,25 @@ a{
   text-decoration: none;
   color: rgb(43, 42, 42);
 }
+@media (max-width: 1024px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .Grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .Card {
+    padding: 4%;
+    font-size: 0.95rem;
+  }
+
+  .Card:hover {
+    transform: scale(1.02); /* Weniger starkes Hover bei Mobile */
+  }
+}
