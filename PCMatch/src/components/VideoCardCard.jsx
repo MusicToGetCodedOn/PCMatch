@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import Graphicscards from '../data/video-card.json';
-import styles from './VideoCardCard.module.css'
+import styles from './Card.module.css'
 import Button from './Button';
-import { div } from 'framer-motion/client';
 
-export default function GpuCard() {
+export default function GpuCard({ searchQuery = "" }) {
   const [visibleCards, setVisibleCards] = useState(12);
 
   
@@ -19,11 +18,16 @@ export default function GpuCard() {
     });
   };
 
+
+  const filteredCards = Graphicscards.filter(card =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    card.chipset.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <div>
       <h2>Grafikkarten</h2>
         <div className={styles.Grid}> 
-      {Graphicscards.slice(0, visibleCards).map((graphicscard) => (
+      {filteredCards.slice(0, visibleCards).map((graphicscard) => (
         <CardItem key={graphicscard.name} data={graphicscard} />
       ))}
         </div>
@@ -53,7 +57,9 @@ function CardItem({ data }) {
     <article className={styles.Card}>
       <h3>{data.name}</h3>
       <p><strong>Chipset: </strong>{data.chipset}</p>
-      <p><strong>Verkaufspreis: </strong>${data.price}</p>
+      <p><strong>Verkaufspreis: </strong> 
+       {(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF
+      </p>
 
       {showMore && (
         <>

@@ -10,7 +10,13 @@
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 5%;
+    transition: .4S;
     
+}
+.Card:Hover{
+  transition: .4S;
+  transform: scale(1.1);
+  background-color: var(--color-bg-primary);
 }
 button{
     margin-bottom: 5%;
@@ -45,4 +51,8 @@ button{
 .showMoreBtn:hover {
   transition: .4s;
   background-color: #cf1dd8;
+}
+a{
+  text-decoration: none;
+  color: rgb(43, 42, 42);
 }

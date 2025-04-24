@@ -18,4 +18,14 @@ transform: scale(1.05);
 .filterBtnActive {
     background-color: var(--color-highlight);
   }
-
+  .searchInput {
+    padding: 0.5rem;
+    margin-bottom: 5%;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    border: solid, var(--color-accent-soft);
+    border-radius: 10px;
+    color: var(--color-text-light);
+    background-color: var(--color-bg-primary);
+  }

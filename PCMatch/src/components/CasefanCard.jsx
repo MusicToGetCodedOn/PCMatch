@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import CaseFans from '../data/case-fan.json';
-import styles from './VideoCardCard.module.css'
+import styles from './Card.module.css'
 import Button from './Button';
-import { div } from 'framer-motion/client';
 
-export default function CasefanCard() {
+
+export default function CasefanCard({ searchQuery = "" }) {
   const [visibleCards, setVisibleCards] = useState(12);
 
   
@@ -19,11 +19,15 @@ export default function CasefanCard() {
     });
   };
 
+  const filteredCards = CaseFans.filter(card =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <h2>Lüfter</h2>
         <div className={styles.Grid}> 
-      {CaseFans.slice(0, visibleCards).map((casefan) => (
+      {filteredCards.slice(0, visibleCards).map((casefan) => (
         <CardItem key={casefan.name} data={casefan} />
       ))}
         </div>
@@ -52,7 +56,9 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>${data.price}</p>
+      <p><strong>Verkaufspreis: </strong> 
+       {(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF
+      </p>
       <p><strong>Grösse: </strong>{data.size} mm</p>
 
       {showMore && (

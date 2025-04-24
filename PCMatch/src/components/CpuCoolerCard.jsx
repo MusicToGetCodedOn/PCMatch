@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Cooler from '../data/cpu-cooler.json';
-import styles from './VideoCardCard.module.css'
+import styles from './Card.module.css'
 import Button from './Button';
 
 
-export default function CpuCoolerCard() {
+export default function CpuCoolerCard({ searchQuery = "" }) {
   const [visibleCards, setVisibleCards] = useState(12);
 
   
@@ -19,12 +19,14 @@ export default function CpuCoolerCard() {
     });
   };
 
-
+  const filteredCards = Cooler.filter(card =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <div>
         <h2>CPU Kühler</h2>
         <div className={styles.Grid}> 
-      {Cooler.slice(0, visibleCards).map((cooler) => (
+      {filteredCards.slice(0, visibleCards).map((cooler) => (
         <CardItem key={cooler.name} data={cooler} />
       ))}
         </div>
@@ -50,7 +52,9 @@ function CardItem({ data }) {
         
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{data.price} $</p>
+      <p><strong>Verkaufspreis: </strong> 
+       {(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF
+      </p>
       <p><strong>rpm </strong>{data.rpm}</p>
 
       {showMore && (

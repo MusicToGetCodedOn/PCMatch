@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Cases from '../data/case.json';
+import Drives from '../data/internal-hard-drive.json';
 import styles from './Card.module.css';
 import Button from './Button';
 
-export default function CaseCard({ searchQuery = "" }) {
+export default function IntHardCard({ searchQuery = "" }) {
     const [visibleCards, setVisibleCards] = useState(12);
 
   
@@ -18,19 +18,19 @@ export default function CaseCard({ searchQuery = "" }) {
       });
     };
 
-    const filteredCards = Cases.filter(card =>
+    const filteredCards = Drives.filter(card =>
       card.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     return (
         <div>
           <h2>Gehäuse</h2>
         <div className={styles.Grid}> 
-      {filteredCards.slice(0, visibleCards).map((shell) => (
-        <CardItem key={shell.name} data={shell} />
+      {filteredCards.slice(0, visibleCards).map((drive) => (
+        <CardItem key={drive.name} data={drive} />
       ))}
         </div>
     
-          {visibleCards < Cases.length && (
+          {visibleCards < Drives.length && (
             <Button onClick={loadMore} className={styles.loadMoreBtn}>
               mehr anzeigen
             </Button>
@@ -49,22 +49,26 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Gehäuse Typ: </strong>{data.type}</p>
       <p><strong>Verkaufspreis: </strong> 
        {(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF
       </p>
+      
+      <p><strong>Speicher: </strong>{data.capacity} GB</p>
+      
 
       {showMore && (
         <>
-          <p><strong>Side Panel:</strong> {data.side_panel}</p>
-          <p><strong>Aussen Volumen:</strong> {data.external_volume} cm/3</p>
-          <p><strong>3.5" Laufwerkschäfte:</strong> {data.internal_35_bays}x</p>
-          <p><strong>Farbe:</strong> {data.color}</p>
+          <p>
+  <strong>Preis pro GB: </strong>
+  {(data.price_per_gb * 0.83 ).toFixed(2)} CHF
+</p>
+          <p><strong>Typ:</strong> {data.type}</p>
+          <p><strong>Cache:</strong> {data.cache} MB</p>
+          <p><strong>form:</strong> {data.form_factor}</p>
+          <p><strong>Interface:</strong> {data.interface}</p>
         </>
       )}
-      <Button onClick={() => window.open("https://www.digitec.ch/de", "_blank") }>
-  Kaufen
-</Button>
+
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
         {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
       </Button>

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Processor from '../data/cpu.json';
-import styles from './VideoCardCard.module.css'
+import styles from './Card.module.css'
 import Button from './Button';
 
 
-export default function CpuCard() {
+export default function CpuCard({ searchQuery = "" }) {
   const [visibleCards, setVisibleCards] = useState(12);
 
   
@@ -19,12 +19,14 @@ export default function CpuCard() {
     });
   };
 
-
+  const filteredCards = Processor.filter(card =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <div>
         <h2>Prozessoren</h2>
         <div className={styles.Grid}> 
-      {Processor.slice(0, visibleCards).map((processor) => (
+      {filteredCards.slice(0, visibleCards).map((processor) => (
         <CardItem key={processor.name} data={processor} />
       ))}
         </div>
@@ -45,12 +47,15 @@ export default function CpuCard() {
 function CardItem({ data }) {
   const [showMore, setShowMore] = useState(false);
 
+ 
   return (
 
         
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{data.price} $</p>
+      <p><strong>Verkaufspreis: </strong> 
+       {(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF
+      </p>
       <p><strong>Cores: </strong>{data.core_count}</p>
 
       {showMore && (

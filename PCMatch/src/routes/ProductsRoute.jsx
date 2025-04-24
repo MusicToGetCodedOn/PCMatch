@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import styles from './ProductsRoute.module.css'
 import CasefanCard from "../components/CasefanCard";
 import CpuCoolerCard from "../components/CpuCoolerCard";
+import IntHardCard from "../components/IntDriveCard";
 
 
 
@@ -13,13 +14,19 @@ export default function ProductsRoute(){
     const [filter, setFilter] = useState('ALL')
 
 
-
+    const [searchQuery, setSearchQuery] = useState('');
     
 
 
     return (
         <div>
       <h2>Produkte</h2>
+      <input
+                type="text"
+                placeholder="Produkte suchen..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={styles.searchInput} />
       
       <div style={{ marginBottom: '1rem' }}>
       <button
@@ -58,24 +65,35 @@ export default function ProductsRoute(){
                 >
                     CPU Kühler
                 </button>
+                <button
+                    className={`${styles.filterBtn} ${filter === 'Drives' ? styles.filterBtnActive : ''}`}
+                    onClick={() => setFilter('Drives')}
+                >
+                    Speicher
+                </button>
             </div>
+            
+
+            
 
 
         {filter === 'ALL' && (
         <>
-          <GpuCard />
-          <CpuCard />
-          <CaseCard />
-          <CasefanCard/>
-          <CpuCoolerCard />
+          <GpuCard searchQuery={searchQuery}/>
+          <CpuCard searchQuery={searchQuery}/>
+          <CaseCard searchQuery={searchQuery}/>
+          <CasefanCard searchQuery={searchQuery}/>
+          <CpuCoolerCard searchQuery={searchQuery}/>
+          <IntHardCard searchQuery={searchQuery}/>
         </>
       )}
 
-      {filter === 'GPU' && <GpuCard />}
-      {filter === 'CPU' && <CpuCard />}
-      {filter === 'Case' && <CaseCard/>}
-      {filter === 'CaseFan' && <CasefanCard/>}
-      {filter === 'CpuCooler' && <CpuCoolerCard/>}
+      {filter === 'GPU' && <GpuCard searchQuery={searchQuery}/>}
+      {filter === 'CPU' && <CpuCard searchQuery={searchQuery}/>}
+      {filter === 'Case' && <CaseCard searchQuery={searchQuery}/>}
+      {filter === 'CaseFan' && <CasefanCard searchQuery={searchQuery}/>}
+      {filter === 'CpuCooler' && <CpuCoolerCard searchQuery={searchQuery}/>}
+      {filter === 'Drives' && <IntHardCard searchQuery={searchQuery}/>}
         </div>
     )
     
