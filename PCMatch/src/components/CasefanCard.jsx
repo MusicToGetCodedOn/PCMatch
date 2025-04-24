@@ -59,7 +59,7 @@ function CardItem({ data }) {
         <>
           <p><strong>Farbe: </strong>{data.color} </p>
           <p>
-          <strong>Rpm:</strong>{""}
+          <strong>Rpm:</strong>{''}
             {data.rpm && data.rpm !== 'null' ? data.rpm : 'n/A'}
           </p>
           <p><strong>Airflow:</strong> {data.airflow} CFM</p>

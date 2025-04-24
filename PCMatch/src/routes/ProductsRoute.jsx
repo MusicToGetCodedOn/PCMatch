@@ -5,6 +5,7 @@ import CaseCard from "../components/CaseCard";
 import Button from "../components/Button";
 import styles from './ProductsRoute.module.css'
 import CasefanCard from "../components/CasefanCard";
+import CpuCoolerCard from "../components/CpuCoolerCard";
 
 
 
@@ -51,6 +52,12 @@ export default function ProductsRoute(){
                 >
                     Lüfter
                 </button>
+                <button
+                    className={`${styles.filterBtn} ${filter === 'CpuCooler' ? styles.filterBtnActive : ''}`}
+                    onClick={() => setFilter('CpuCooler')}
+                >
+                    CPU Kühler
+                </button>
             </div>
 
 
@@ -60,6 +67,7 @@ export default function ProductsRoute(){
           <CpuCard />
           <CaseCard />
           <CasefanCard/>
+          <CpuCoolerCard />
         </>
       )}
 
@@ -67,6 +75,7 @@ export default function ProductsRoute(){
       {filter === 'CPU' && <CpuCard />}
       {filter === 'Case' && <CaseCard/>}
       {filter === 'CaseFan' && <CasefanCard/>}
+      {filter === 'CpuCooler' && <CpuCoolerCard/>}
         </div>
     )
     
