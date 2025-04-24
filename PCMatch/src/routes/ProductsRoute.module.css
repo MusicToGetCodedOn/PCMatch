@@ -35,3 +35,42 @@ img{
     border-radius: 10px;
 
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+
+.grid a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 160px;
+  background-color: #2b2d3a;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s, border 0.3s, transform 0.3s;
+}
+
+
+.grid a:hover {
+  border: 3px solid #9b59b6; /* Lila Hover-Rahmen */
+  background-color: #343649; /* leicht heller als #2b2d3a */
+  transform: scale(1.03);
+}
+
+
+.grid a img {
+  width: 80px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
