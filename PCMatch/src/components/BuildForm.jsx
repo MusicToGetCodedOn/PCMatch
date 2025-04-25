@@ -70,6 +70,14 @@ const BuildForm = () => {
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({});
     const [buildName, setBuildName] = useState("");
+    const navigateback = useNavigate();
+
+    // Funktion zum Zurückgehen
+    const handleGoBack = () => {
+        if (currentStep > 0) {
+            setCurrentStep(currentStep - 1); // Reduziert den aktuellen Schritt um 1
+        }
+    };
 
     const handleSkip = () => {
         if (currentStep < steps.length - 1) {
@@ -170,6 +178,15 @@ const BuildForm = () => {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                 {CurrentCardComponent}
             </div>
+            {/* GoBack-Button */}
+            {currentStep > 0 && (
+                <button
+                    onClick={handleGoBack}
+                    className={styles.loadMoreBtn}
+                >
+                    Go Back
+                </button>
+            )}
             <button onClick={handleSkip} style={{ marginTop: "20px" }} className={styles.loadMoreBtn}>Skip</button>
         </div>
     );

@@ -37,12 +37,13 @@ button{
   cursor: pointer;
   margin-top: 1rem;
   transition: .4s;
+  margin-right: 2%;
 
 }
 
 .loadMoreBtn:hover {
   transition: .4s;
-  background-color: var();
+  background-color: var(--color-accent-secondary);
   transform: scale(1.05);
 }
 .showMoreBtn {

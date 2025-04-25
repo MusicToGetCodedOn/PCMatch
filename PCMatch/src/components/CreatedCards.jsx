@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Card.module.css"; // Optional: Styling für die Karten
-import buildName from './BuildForm.jsx'
+import completebuild from '../assets/completebuild.png';
 
 const CreatedCards = () => {
     const [savedBuilds, setSavedBuilds] = useState([]);
@@ -50,7 +50,8 @@ const CreatedCards = () => {
             </button>
             <div className={styles.cardContainer}>
                 {savedBuilds.map((build, index) => (
-                    <div key={index} className={styles.card}>
+                    <div key={index} className={styles.Card}>
+                        <img src={completebuild} />
                         {Object.entries(build).map(([key, value]) => (
                             <p key={key}>
                                 <strong>{key}:</strong> {value || "Skipped"}
