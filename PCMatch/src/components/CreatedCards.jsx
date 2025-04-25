@@ -28,6 +28,26 @@ const CreatedCards = () => {
     return (
         <div>
             <h2>Your Saved PC Builds</h2>
+              {/* Button zum Leeren des localStorage */}
+              <button
+                onClick={() => {
+                    if (window.confirm("Are you sure you want to delete all saved builds?")) {
+                        localStorage.removeItem("pcBuildData"); // Löscht nur die Builds
+                        setSavedBuilds([]); // Aktualisiert den Zustand
+                    }
+                }}
+                style={{
+                    marginBottom: "1rem",
+                    padding: "0.5rem 1rem",
+                    backgroundColor: "#ff4d4d",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                }}
+            >
+                Clear Saved Builds
+            </button>
             <div className={styles.cardContainer}>
                 {savedBuilds.map((build, index) => (
                     <div key={index} className={styles.card}>
