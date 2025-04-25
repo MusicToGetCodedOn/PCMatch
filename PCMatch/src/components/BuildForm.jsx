@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 //Data imports
 import gpuData from "../data/video-card.json";
 import cpuData from "../data/cpu.json";
@@ -31,6 +32,8 @@ import WirelessCardComponent from './WirelessCard';
 
 //styling imports
 import styles from '../components/Buildsummary.module.css';
+
+
 const BuildForm = () => {
     // Add artificial IDs to each dataset
     const addArtificialIds = (data) => {
@@ -66,6 +69,7 @@ const BuildForm = () => {
 
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({});
+    const [buildName, setBuildName] = useState("");
 
     const handleSkip = () => {
         if (currentStep < steps.length - 1) {
@@ -78,10 +82,33 @@ const BuildForm = () => {
     const handleEdit = (stepIndex) => {
         setCurrentStep(stepIndex);
     };
-
+    const navigate = useNavigate();
     const handleSubmit = () => {
-        console.log("Final Form Data:", formData);
-        alert("Form submitted! Check the console for details.");
+        console.log("Submit button clicked!"); // Debugging
+    console.log("Form Data:", formData); // Debugging
+
+    // Lade bestehende Builds aus dem localStorage
+    let existingBuilds;
+    try {
+        existingBuilds = JSON.parse(localStorage.getItem("pcBuildData")) || [];
+        if (!Array.isArray(existingBuilds)) {
+            existingBuilds = []; // Fallback auf ein leeres Array, wenn die Daten kein Array sind
+        }
+    } catch (error) {
+        console.error("Error parsing localStorage data:", error);
+        existingBuilds = []; // Fallback auf ein leeres Array bei Fehler
+    }
+
+    // Füge den neuen Build hinzu
+    const updatedBuilds = [...existingBuilds, { name: buildName, ...formData }];
+
+    // Speichere die aktualisierte Liste im localStorage
+    localStorage.setItem("pcBuildData", JSON.stringify(updatedBuilds));
+
+
+    alert("Your build was saved successfully i guess");
+    navigate('/completedbuilds')
+    
     };
 
     if (currentStep === steps.length) {
@@ -102,9 +129,30 @@ const BuildForm = () => {
                     </div>
                   </div>
                 ))}
+
+                <div style={{ marginTop: "1rem" }}>
+                        <label htmlFor="buildName" style={{ display: "block", marginBottom: "0.5rem" }}>
+                            Enter a name for your build:
+                        </label>
+                        <input
+                            type="text"
+                            id="buildName"
+                            value={buildName}
+                            onChange={(e) => setBuildName(e.target.value)}
+                            placeholder="e.g., Gaming PC"
+                            style={{
+                                padding: "0.5rem",
+                                width: "100%",
+                                maxWidth: "300px",
+                                marginBottom: "1rem",
+                                border: "1px solid #ccc",
+                                borderRadius: "4px",
+                            }}
+                        />
+                    </div>
                 
                 <div style={{ textAlign: "center", marginTop: "2rem" }}>
-                  <button onClick={handleSubmit} className={styles.showMoreBtn}>
+                  <button onClick={handleSubmit}  className={styles.showMoreBtn}>
                     Submit
                   </button>
                 </div>
