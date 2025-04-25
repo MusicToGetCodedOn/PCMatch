@@ -24,9 +24,10 @@
 }
 
 .homeButton {
+
     background-color: #b025eb;
     color: rgb(43, 42, 42);
-    padding: 0.5rem 1rem;
+    width: 84.61px;
     text-decoration: none;
     text-align: center;
     padding-top: 2%;
@@ -35,6 +36,7 @@
     transition: 0.4s;
     padding-bottom: 2%;
 }
+
 
 .homeButton:hover {
     background-color: #cf1dd8;

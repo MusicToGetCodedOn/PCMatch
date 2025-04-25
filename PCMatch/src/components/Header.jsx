@@ -16,10 +16,10 @@ export default function Header() {
         <Link to="/" className={styles.headerTitle}>PCMatch</Link>
 
         <nav className={styles.nav}>
-          <div>
+          
             <Link to="/builder/" className={styles.homeButton}>Builder</Link>
-            <Link to="/completedbuilds/" className={styles.homeButton}>Completed Builds</Link>
-          </div>
+            <Link to="/completedbuilds/" className={styles.homeButton}>Builds</Link>
+        
           {/* Button für das Ausklappen des Produktsmenüs */}
           <button className={styles.productsButton} onClick={toggleProducts}>Products</button>
         </nav>

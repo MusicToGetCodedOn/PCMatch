@@ -35,7 +35,7 @@ export default function IntDriveCard() {
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
           {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heißt.</p>
+        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
       )}
 
         <div className={styles.Grid}> 
