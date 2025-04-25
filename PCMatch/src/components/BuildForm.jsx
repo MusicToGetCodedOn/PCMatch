@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//Data imports
 import gpuData from "../data/video-card.json";
 import cpuData from "../data/cpu.json";
 import Cases from '../data/case.json';
@@ -28,6 +29,8 @@ import PowerSupplyCard from './PowerSupplyCard';
 import WiredCardComponent from './WiredCard';
 import WirelessCardComponent from './WirelessCard';
 
+//styling imports
+import styles from '../components/Buildsummary.module.css';
 const BuildForm = () => {
     // Add artificial IDs to each dataset
     const addArtificialIds = (data) => {
@@ -46,7 +49,7 @@ const BuildForm = () => {
         }
     };
     const steps = [
-        { id: "gpu", label: "Select a GPU", data: addArtificialIds(gpuData), component: <GpuCard handleNext={handleNext}/> },
+        { id: "gpu", label: "Select a GPU", data: addArtificialIds(gpuData), component: <GpuCard handleNext={handleNext}/>, },
         { id: "cpu", label: "Select a CPU", data: addArtificialIds(cpuData), component: <CpuCard handleNext={handleNext}/> },
         { id: "case", label: "Select a Case", data: addArtificialIds(Cases), component: <CaseCard handleNext={handleNext}/>},
         { id: "caseFan", label: "Select Case Fans", data: addArtificialIds(CaseFans), component: <CasefanCard handleNext={handleNext}/>},
@@ -85,18 +88,28 @@ const BuildForm = () => {
         // Summary step
         return (
             <div>
-                <h2>Summary</h2>
-                <ul>
-                    {steps && steps.map((step, index) => (
-                        <li key={step.id}>
-                            <strong>{step.label}:</strong> {formData[step.id] || "Skipped"}
-                            <button onClick={() => handleEdit(index)}>Edit</button>
-                        </li>
-                    ))}
-                </ul>
-                <button onClick={handleSubmit}>Submit</button>
+              <h2 style={{ padding: "1rem" }}>Summary</h2>
+              
+              <div className={styles.Card} style={{ maxWidth: "800px", margin: "0 auto" }}>
+                {steps && steps.map((step, index) => (
+                  <div key={step.id} style={{ marginBottom: "1rem" }}>
+                    <strong>{step.label}:</strong> {formData[step.id] || <em>Skipped</em>}
+                    <div>
+                      <button onClick={() => handleEdit(index)} className={styles.showMoreBtn} style={{ marginTop: "0.5rem" }}>
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                
+                <div style={{ textAlign: "center", marginTop: "2rem" }}>
+                  <button onClick={handleSubmit} className={styles.showMoreBtn}>
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
-        );
+          );
     }
 
     const currentStepData = steps[currentStep];
@@ -108,7 +121,7 @@ const BuildForm = () => {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                 {CurrentCardComponent}
             </div>
-            <button onClick={handleSkip} style={{ marginTop: "20px" }}>Skip</button>
+            <button onClick={handleSkip} style={{ marginTop: "20px" }} className={styles.loadMoreBtn}>Skip</button>
         </div>
     );
 };

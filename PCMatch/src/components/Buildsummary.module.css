@@ -1,0 +1,73 @@
+.Grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 1rem;
+  }
+.Card{
+    border: purple, solid;
+
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 5%;
+    transition: .4S;
+    
+}
+
+button{
+    margin-bottom: 5%;
+}
+.loadMoreBtn {
+  background-color: var(--color-accent-main);
+  color: black;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: .4s;
+}
+
+.loadMoreBtn:hover {
+  transition: .4s;
+  background-color: var();
+  transform: scale(1.05);
+}
+.showMoreBtn {
+  background-color: #b025eb;
+  color: black;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: .4s;
+}
+
+.showMoreBtn:hover {
+  transition: .4s;
+  background-color: #cf1dd8;
+}
+a{
+  text-decoration: none;
+  color: rgb(43, 42, 42);
+}
+@media (max-width: 1024px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .Grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .Card {
+    padding: 4%;
+    font-size: 0.95rem;
+  }
+
+}
