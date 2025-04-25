@@ -32,12 +32,12 @@ export default function CasefanCard() {
 
   return (
     <div>
-      <h2>Lüfter</h2>
+      <h2>Fans</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
 
         <div className={styles.Grid}> 
@@ -48,12 +48,12 @@ export default function CasefanCard() {
 
       {visibleCards < filteredCards.length && (
                   <Button onClick={loadMore} className={styles.loadMoreBtn}>
-                    mehr anzeigen
+                   Show more
                   </Button>
                 )}
 
       <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-        Nach oben
+        Go up
       </Button>
     </div>
   );
@@ -69,15 +69,15 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{''}
+      <p><strong>Retailprice: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}
       </p>
-      <p><strong>Grösse: </strong>{''} 
+      <p><strong>Size:</strong>{' '} 
       {data.size ? `${data.size} mm` : 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Farbe: </strong>{''}
+          <p><strong>Color: </strong>{''}
           {data.color? `${data.color}` : 'n/A'}</p>
           <p>
   <strong>Rpm:</strong>{' '}
@@ -92,19 +92,19 @@ function CardItem({ data }) {
     : 'n/A'}
 </p>
 <p>
-  <strong>Lautstärke:</strong>{' '}
+  <strong>Noise level:</strong>{' '}
   {Array.isArray(data.noise_level) && data.noise_level.length
     ? `${data.noise_level.join(', ')} dB`
     : data.noise_level
     ? `${data.noise_level} dB`
     : 'n/A'}
 </p>
-          <p><strong>PWM:</strong> {data.pwm ? "ja" : "nein"}</p>
+          <p><strong>PWM:</strong> {data.pwm ? "Yes" : "No"}</p>
         </>
       )}
 
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.showMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
 
       

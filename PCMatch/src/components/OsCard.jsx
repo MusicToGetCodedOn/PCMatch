@@ -30,12 +30,12 @@ export default function OsCard() {
   );
   return (
     <div>
-      <h2>Betriebssysteme</h2>
+      <h2>Operating systems</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
 
        <div className={styles.Grid}> 
@@ -46,11 +46,11 @@ export default function OsCard() {
 
       {visibleCards < filteredCards.length && (
                   <Button onClick={loadMore} className={styles.loadMoreBtn}>
-                    mehr anzeigen
+                    Show more
                   </Button>
                 )}
       <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-        Nach oben
+        Go up
       </Button>
     </div>
   );
@@ -66,22 +66,22 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{' '}
+      <p><strong>Retailprice: </strong>{' '}
       {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)}  CHF` : 'n/A'}
       </p>
-      <p><strong>Modus: </strong>{' '}
+      <p><strong>Mode: </strong>{' '}
       {data.mode ? `${data.mode}-bit` : 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Maximaler RAM:</strong>{' '}
-          {data.max_memory ? `${data.max_memory}` : 'n/A'} </p>
+          <p><strong>Max Memory:</strong>{' '}
+          {data.max_memory ? `${data.max_memory} GB` : 'n/A'} </p>
           
         </>
       )}
 
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.showMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
 
       

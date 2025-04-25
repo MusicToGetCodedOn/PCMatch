@@ -36,7 +36,7 @@ export default function MotherboardCard() {
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
 
         <div className={styles.Grid}> 
@@ -47,11 +47,11 @@ export default function MotherboardCard() {
 
       {visibleCards < filteredCards.length && (
                   <Button onClick={loadMore} className={styles.loadMoreBtn}>
-                    mehr anzeigen
+                    Show more
                   </Button>
                 )}
       <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-        Nach oben
+        Go up
       </Button>
     </div>
   );
@@ -67,7 +67,7 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{' '}
+      <p><strong>Retailprice: </strong>{' '}
       {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)}  CHF` : 'n/A'}
       </p>
       <p><strong>Socket: </strong>{' '}
@@ -78,20 +78,20 @@ function CardItem({ data }) {
           <p><strong>Form:</strong>{' '}
           {data.form_factor ? `${data.form_factor}` : 'n/A'} </p>
           <p>
-            <strong>Maximaler RAM:</strong>{' '}
+            <strong>Max Memory:</strong>{' '}
             {data.max_memory ? `${data.max_memory} GB` : 'n/A'}</p>
           <p>
-  <strong>RAM Slots:</strong>{' '}
+  <strong>Memory Slots:</strong>{' '}
   {data.memory_slots ? `${data.memory_slots}` : 'n/A'}
 </p>
-          <p><strong>Farbe:</strong>{' '}
+          <p><strong>Color:</strong>{' '}
            {data.color ?`${data.color}` : 'n/A'}</p>
           
         </>
       )}
 
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.showMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
 
       

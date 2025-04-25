@@ -30,12 +30,12 @@ export default function CaseCard() {
     );
     return (
         <div>
-          <h2>Gehäuse</h2>
+          <h2>Cases</h2>
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
           {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
         
       <div className={styles.Grid}> 
@@ -48,11 +48,11 @@ export default function CaseCard() {
     
           {visibleCards < filteredCards.length && (
             <Button onClick={loadMore} className={styles.loadMoreBtn}>
-              mehr anzeigen
+              Show more
             </Button>
           )}
            <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-                  Nach oben
+                  Go up
                 </Button>
         </div>
       );
@@ -65,9 +65,9 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Gehäuse Typ: </strong>{' '}
+      <p><strong>Case type: </strong>{' '}
       {data.type ? `${data.type}` : 'n/A'}</p>
-      <p><strong>Verkaufspreis: </strong>{''}
+      <p><strong>Retailprice: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}
       </p>
 
@@ -75,19 +75,16 @@ function CardItem({ data }) {
         <>
           <p><strong>Side Panel:</strong>{' '}
           {data.side_panel ? `${data.side_panel}` : 'n/A'}</p>
-          <p><strong>Aussen Volumen:</strong>{' '}
+          <p><strong>Volume:</strong>{' '}
           {data.external_volume ? `${data.external_volume} cm/3` : 'n/A'}</p>
-          <p><strong>3.5" Laufwerkschäfte:</strong>{' '}
+          <p><strong>Internal 3.5" Bays:</strong>{' '}
           {data.internal_35_bays ? `${data.internal_35_bays}x` : 'n/A'}</p>
-          <p><strong>Farbe:</strong>{''}
+          <p><strong>Color:</strong>{' '}
           {data.color ? `${data.color}` : 'n/A'}</p>
         </>
       )}
-      <Button onClick={() => window.open("https://www.digitec.ch/de/s1/tag/gehaeuse-524", "_blank") }>
-  Kaufen
-</Button>
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
     </article>
   );

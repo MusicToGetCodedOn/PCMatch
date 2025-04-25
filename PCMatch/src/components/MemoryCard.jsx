@@ -29,13 +29,13 @@ export default function MemoryCard() {
     );
     return (
         <div>
-          <h2>RAM</h2>
+          <h2>Memory</h2>
 
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
           {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
 
         <div className={styles.Grid}> 
@@ -46,11 +46,11 @@ export default function MemoryCard() {
     
           {visibleCards < filteredCards.length && (
                       <Button onClick={loadMore} className={styles.loadMoreBtn}>
-                        mehr anzeigen
+                        Show more
                       </Button>
                     )}
            <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-                  Nach oben
+                  Go up
                 </Button>
         </div>
       );
@@ -63,11 +63,11 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{''}
+      <p><strong>Retailprice: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}
       </p>
       <p>
-  <strong>Anzahl:</strong>{' '}
+  <strong>Count:</strong>{' '}
   {Array.isArray(data.modules) && data.modules.length === 2
     ? `${data.modules[0]}x ${data.modules[1]} GB`
     : 'n/A'}
@@ -83,13 +83,13 @@ function CardItem({ data }) {
     : 'n/A'}
 </p>
 <p>
-  <strong>Taktfrequenz:</strong>{' '}
+  <strong>Clock frequency:</strong>{' '}
   {Array.isArray(data.speed) && data.speed[1]
     ? `${data.speed[1]} MHz`
     : 'n/A'}
 </p>
           <p>
-  <strong>Preis pro GB: </strong>{' '}
+  <strong>Price / GB: </strong>{' '}
   {data.price_per_gb ? `${(data.price_per_gb * 0.83 ).toFixed(2)} CHF` : 'n/A'} 
 </p>
           <p><strong>FWL:</strong>{' '}
@@ -101,7 +101,7 @@ function CardItem({ data }) {
       )}
 
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
     </article>
   );

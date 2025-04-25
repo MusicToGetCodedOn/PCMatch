@@ -31,12 +31,12 @@ export default function CpuCoolerCard() {
 
   return (
     <div>
-        <h2>CPU Kühler</h2>
+        <h2>CPU Coolers</h2>
 
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
         {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
 
         <div className={styles.Grid}> 
@@ -47,11 +47,11 @@ export default function CpuCoolerCard() {
 
       {visibleCards < filteredCards.length && (
                   <Button onClick={loadMore} className={styles.loadMoreBtn}>
-                    mehr anzeigen
+                    Show more
                   </Button>
                 )}
        <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-              Nach oben
+              Go up
             </Button>
     </div>
   );
@@ -66,20 +66,20 @@ function CardItem({ data }) {
         
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{' '} 
+      <p><strong>Retailprice: </strong>{' '} 
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'} 
       </p>
-      <p><strong>rpm </strong>{' '}
+      <p><strong>Rpm: </strong>{' '}
       {data.rpm ? `${data.rpm}` : 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Lautstärke:</strong>{' '} 
+          <p><strong>Noise level:</strong>{' '} 
           {data.noise_level ? `${data.noise_level} dB` : 'n/A'}</p>
-          <p><strong>Farbe:</strong>{''}
+          <p><strong>Color:</strong>{''}
            {data.color ? `${data.color}` : 'n/A'} </p>
           <p>
-            <strong>Grösse:</strong>{' '}
+            <strong>Size:</strong>{' '}
             {data.size ? `${data.size} mm` : 'n/A'}
           </p>
           
@@ -87,7 +87,7 @@ function CardItem({ data }) {
       )}
 
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
     </article>
   );

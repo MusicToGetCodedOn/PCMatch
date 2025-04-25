@@ -1,7 +1,8 @@
-import WiredNtkCard from "../components/WiredCard";
+import WirelessNtkCard from "../components/WirelessCard";
+
 
 export default function WirelessRoute() {
     return <main>
-        <WiredNtkCard/>
-    </main>
+        <WirelessNtkCard/>
+            </main>
 }

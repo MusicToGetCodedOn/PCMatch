@@ -77,7 +77,7 @@
     background-color: #282b34; /* Etwas hellere Farbe als der Header */
     width: 100%;
     padding: 20px 0;
-    position: absolute;
+    position: fixed;
     top: 60px; /* Direkt unter dem Header */
     left: 0;
     right: 0;

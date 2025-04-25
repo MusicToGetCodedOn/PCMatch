@@ -32,12 +32,12 @@ export default function GpuCard() {
 
   return (
     <div>
-      <h2>Grafikkarten</h2>
+      <h2>Graphics Cards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {filteredCards.length === 0 && searchQuery && (
-        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heisst.</p>
+        <p className={styles.noResults}>Sorry, but we couldn't find "{searchQuery}".</p>
       )}
 
       <div className={styles.Grid}> 
@@ -48,12 +48,12 @@ export default function GpuCard() {
 
       {visibleCards < filteredCards.length && (
   <Button onClick={loadMore} className={styles.loadMoreBtn}>
-    mehr anzeigen
+    Show more
   </Button>
 
       )}
       <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
-        Nach oben
+        Go up
       </Button>
     </div>
   );
@@ -66,20 +66,20 @@ function CardItem({ data }) {
     <article className={styles.Card}>
       <h3>{data.name}</h3>
       <p><strong>Chipset:</strong> {data.chipset || 'n/A'}</p>
-      <p><strong>Verkaufspreis:</strong> {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}</p>
+      <p><strong>Retailprice:</strong> {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Speicher:</strong> {data.memory ? `${data.memory} GB` : 'n/A'}</p>
-          <p><strong>Standart Taktfrequenz:</strong> {data.core_clock ? `${data.core_clock} MHz` : 'n/A'}</p>
-          <p><strong>Übertaktet:</strong> {data.boost_clock ? `${data.boost_clock} MHz` : 'n/A'}</p>
-          <p><strong>Farbe:</strong> {data.color || 'n/A'}</p>
-          <p><strong>Länge:</strong> {data.length ? `${data.length} mm` : 'n/A'}</p>
+          <p><strong>Memory:</strong> {data.memory ? `${data.memory} GB` : 'n/A'}</p>
+          <p><strong>clock frequency:</strong> {data.core_clock ? `${data.core_clock} MHz` : 'n/A'}</p>
+          <p><strong>clock frequency overclocked:</strong> {data.boost_clock ? `${data.boost_clock} MHz` : 'n/A'}</p>
+          <p><strong>Color:</strong> {data.color || 'n/A'}</p>
+          <p><strong>Length:</strong> {data.length ? `${data.length} mm` : 'n/A'}</p>
         </>
       )}
 
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.showMoreBtn}>
-        {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
     </article>
   );

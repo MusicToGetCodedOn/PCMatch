@@ -33,6 +33,7 @@ export default function ProductsRoute(){
     return (
         <div>
             <div className={styles.grid}>
+
           <a href="/products/os"><img src={os} />OS</a>
           <a href="/products/casefans"><img src={casefan} /> Fans</a>
           <a href="/products/cases"><img src={shell} />Cases</a>
@@ -42,10 +43,12 @@ export default function ProductsRoute(){
           <a href="/products/intdrives"><img src={intdrives} />Internal Drives</a>
           <a href="/products/memory"><img src={memory} />Memory</a>
           <a href="/products/motherboards"><img src={motherboard} />Motherboards</a>
-          <a href="/products/powersupplys"><img src={powersupply} />Powersupply</a>
+          <a href="/products/powersupplies"><img src={powersupply} />Powersupply</a>
           <a href="/products/videocards"><img src={videocard} />GPU's</a>
           <a href="/products/wirednetworkcards"><img src={wiredcard} />Wired Networkcards</a>
           <a href="/products/wirelessnetworkcards"><img src={wirelesscard} />Wireless Networkcards</a>
+
+
             </div>
       <h2>Products</h2>
       <input
