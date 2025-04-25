@@ -44,17 +44,17 @@ export default function Header() {
       >
         <div className={styles.grid}>
           <a href="/products/">Browse All</a>
-          <a href="/products/os"><img src={os} />Betriebssystem</a>
-          <a href="/products/casefans"><img src={casefan} /> Lüfter</a>
-          <a href="/products/cases"><img src={shell} />Gehäuse</a>
-          <a href="/products/cpucoolers"><img src={cpucooler} />Cpu Kühler</a>
-          <a href="/products/cpus"><img src={cpu} />Cpu's</a>
+          <a href="/products/os"><img src={os} />OS</a>
+          <a href="/products/casefans"><img src={casefan} /> Fans</a>
+          <a href="/products/cases"><img src={shell} />Cases</a>
+          <a href="/products/cpucoolers"><img src={cpucooler} />CPU Cooler</a>
+          <a href="/products/cpus"><img src={cpu} />CPU's</a>
           <a href="/products/extdrives"><img src={extdrives} />External Drives</a>
           <a href="/products/intdrives"><img src={intdrives} />Internal Drives</a>
-          <a href="/products/memory"><img src={memory} />Arbeitsspeicher</a>
+          <a href="/products/memory"><img src={memory} />Memory</a>
           <a href="/products/motherboards"><img src={motherboard} />Motherboards</a>
-          <a href="/products/powersupplys"><img src={powersupply} />Netzteile</a>
-          <a href="/products/videocards"><img src={videocard} />Grafikkarten</a>
+          <a href="/products/powersupplys"><img src={powersupply} />Powersupply</a>
+          <a href="/products/videocards"><img src={videocard} />GPU's</a>
           <a href="/products/wirednetworkcards"><img src={wiredcard} />Wired Networkcards</a>
           <a href="/products/wirelessnetworkcards"><img src={wirelesscard} />Wireless Networkcards</a>
         </div>

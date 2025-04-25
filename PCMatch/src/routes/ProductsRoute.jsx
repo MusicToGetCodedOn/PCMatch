@@ -33,21 +33,21 @@ export default function ProductsRoute(){
     return (
         <div>
             <div className={styles.grid}>
-                <a href="/products/os"><img src={os} />Betriebssystem</a>
-                <a href="/products/casefans"><img src={casefan} /> Lüfter</a>
-                <a href="/products/cases"><img src={shell} />Gehäuse</a>
-                <a href="/products/cpucoolers"><img src={cpucooler} />Cpu Kühler</a>
-                <a href="/products/cpus"><img src={cpu} />Cpu's</a>
-                <a href="/products/extdrives"><img src={extdrives} />External Drives</a>
-                <a href="/products/intdrives"><img src={intdrives} />Internal Drives</a>
-                <a href="/products/memory"><img src={memory} />Arbeitsspeicher</a>
-                <a href="/products/motherboards"><img src={motherboard} />Motherboards</a>
-                <a href="/products/powersupplys"><img src={powersupply} />Netzteile</a>
-                <a href="/products/videocards"><img src={videocard} />Grafikkarten</a>
-                <a href="/products/wirednetworkcards"><img src={wiredcard} />Wired Networkcards</a>
-                <a href="/products/wirelessnetworkcards"><img src={wirelesscard} />Wireless Networkcards</a>
+          <a href="/products/os"><img src={os} />OS</a>
+          <a href="/products/casefans"><img src={casefan} /> Fans</a>
+          <a href="/products/cases"><img src={shell} />Cases</a>
+          <a href="/products/cpucoolers"><img src={cpucooler} />CPU Cooler</a>
+          <a href="/products/cpus"><img src={cpu} />CPU's</a>
+          <a href="/products/extdrives"><img src={extdrives} />External Drives</a>
+          <a href="/products/intdrives"><img src={intdrives} />Internal Drives</a>
+          <a href="/products/memory"><img src={memory} />Memory</a>
+          <a href="/products/motherboards"><img src={motherboard} />Motherboards</a>
+          <a href="/products/powersupplys"><img src={powersupply} />Powersupply</a>
+          <a href="/products/videocards"><img src={videocard} />GPU's</a>
+          <a href="/products/wirednetworkcards"><img src={wiredcard} />Wired Networkcards</a>
+          <a href="/products/wirelessnetworkcards"><img src={wirelesscard} />Wireless Networkcards</a>
             </div>
-      <h2>Produkte</h2>
+      <h2>Products</h2>
       <input
                 type="text"
                 placeholder="Produkte suchen..."
@@ -84,20 +84,20 @@ export default function ProductsRoute(){
                     className={`${styles.filterBtn} ${filter === 'CaseFan' ? styles.filterBtnActive : ''}`}
                     onClick={() => setFilter('CaseFan')}
                 >
-                    Lüfter
+                    Fans
                 </button>
                 <button
                     className={`${styles.filterBtn} ${filter === 'CpuCooler' ? styles.filterBtnActive : ''}`}
                     onClick={() => setFilter('CpuCooler')}
                 >
                     <img src={cpucooler} alt="cpu cooler"/><br />
-                    CPU Kühler
+                    CPU Cooler
                 </button>
                 <button
                     className={`${styles.filterBtn} ${filter === 'Drives' ? styles.filterBtnActive : ''}`}
                     onClick={() => setFilter('Drives')}
                 >
-                    Speicher
+                    Storage
                 </button>
             </div>
             
