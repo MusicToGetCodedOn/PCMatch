@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import CaseFans from '../data/case-fan.json';
+import Motherboards from '../data/motherboard.json';
 import styles from './Card.module.css'
 import Button from './Button';
 import SearchBar from './SearchBar';
 
-
-export default function CasefanCard() {
+export default function MotherboardCard() {
   const [visibleCards, setVisibleCards] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
     
-    const CaseFansWithIds = CaseFans.map((card, index) => ({
+    const MotherboardsWithIds = Motherboards.map((card, index) => ({
       ...card,
       id: index + 1
     }));
@@ -25,14 +24,14 @@ export default function CasefanCard() {
     });
   };
 
-    const filteredCards = CaseFansWithIds.filter(card =>
-    card.name.toLowerCase().includes(searchQuery.toLowerCase())
-    
-  );
 
+  const filteredCards = MotherboardsWithIds.filter(card =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    card.socket.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <div>
-      <h2>Lüfter</h2>
+      <h2>Motherboards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
@@ -41,17 +40,16 @@ export default function CasefanCard() {
       )}
 
         <div className={styles.Grid}> 
-                {filteredCards.slice(0, visibleCards).map((casefan) => (
-                  <CardItem key={casefan.id} data={casefan} />
-                ))}
-              </div>
+                        {filteredCards.slice(0, visibleCards).map((motherboard) => (
+                          <CardItem key={motherboard.id} data={motherboard} />
+                        ))}
+                      </div>
 
       {visibleCards < filteredCards.length && (
                   <Button onClick={loadMore} className={styles.loadMoreBtn}>
                     mehr anzeigen
                   </Button>
                 )}
-
       <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
         Nach oben
       </Button>
@@ -69,37 +67,26 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong>{''}
-       {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}
+      <p><strong>Verkaufspreis: </strong>{' '}
+      {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)}  CHF` : 'n/A'}
       </p>
-      <p><strong>Grösse: </strong>{''} 
-      {data.size ? `${data.size} mm` : 'n/A'}</p>
+      <p><strong>Socket: </strong>{' '}
+      {data.socket ? `${data.socket}` : 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Farbe: </strong>{''}
-          {data.color? `${data.color}` : 'n/A'}</p>
+          <p><strong>Form:</strong>{' '}
+          {data.form_factor ? `${data.form_factor}` : 'n/A'} </p>
           <p>
-  <strong>Rpm:</strong>{' '}
-  {Array.isArray(data.rpm) ? data.rpm.join(', ') : data.rpm || 'n/A'}
+            <strong>Maximaler RAM:</strong>{' '}
+            {data.max_memory ? `${data.max_memory} GB` : 'n/A'}</p>
+          <p>
+  <strong>RAM Slots:</strong>{' '}
+  {data.memory_slots ? `${data.memory_slots}` : 'n/A'}
 </p>
-<p>
-  <strong>Airflow:</strong>{' '}
-  {Array.isArray(data.airflow) && data.airflow.length
-    ? `${data.airflow.join(', ')} CFM`
-    : data.airflow
-    ? `${data.airflow} CFM`
-    : 'n/A'}
-</p>
-<p>
-  <strong>Lautstärke:</strong>{' '}
-  {Array.isArray(data.noise_level) && data.noise_level.length
-    ? `${data.noise_level.join(', ')} dB`
-    : data.noise_level
-    ? `${data.noise_level} dB`
-    : 'n/A'}
-</p>
-          <p><strong>PWM:</strong> {data.pwm ? "ja" : "nein"}</p>
+          <p><strong>Farbe:</strong>{' '}
+           {data.color ?`${data.color}` : 'n/A'}</p>
+          
         </>
       )}
 

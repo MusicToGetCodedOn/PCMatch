@@ -2,11 +2,17 @@ import { useState } from 'react';
 import Cooler from '../data/cpu-cooler.json';
 import styles from './Card.module.css'
 import Button from './Button';
+import SearchBar from './SearchBar';
 
 
-export default function CpuCoolerCard({ searchQuery = "" }) {
+export default function CpuCoolerCard() {
   const [visibleCards, setVisibleCards] = useState(12);
-
+  const [searchQuery, setSearchQuery] = useState("");
+    
+    const CoolerWithIds = Cooler.map((card, index) => ({
+      ...card,
+      id: index + 1
+    }));
   
   const loadMore = () => {
     setVisibleCards(prev => prev + 12); 
@@ -19,23 +25,31 @@ export default function CpuCoolerCard({ searchQuery = "" }) {
     });
   };
 
-  const filteredCards = Cooler.filter(card =>
+  const filteredCards = CoolerWithIds.filter(card =>
     card.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
   return (
     <div>
         <h2>CPU Kühler</h2>
-        <div className={styles.Grid}> 
-      {filteredCards.slice(0, visibleCards).map((cooler) => (
-        <CardItem key={cooler.name} data={cooler} />
-      ))}
-        </div>
 
-      {visibleCards < Cooler.length && (
-        <Button onClick={loadMore} className={styles.loadMoreBtn}>
-          mehr anzeigen
-        </Button>
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
+        {filteredCards.length === 0 && searchQuery && (
+        <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heißt.</p>
       )}
+
+        <div className={styles.Grid}> 
+                {filteredCards.slice(0, visibleCards).map((cooler) => (
+                  <CardItem key={cooler.id} data={cooler} />
+                ))}
+              </div>
+
+      {visibleCards < filteredCards.length && (
+                  <Button onClick={loadMore} className={styles.loadMoreBtn}>
+                    mehr anzeigen
+                  </Button>
+                )}
        <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
               Nach oben
             </Button>
@@ -52,18 +66,21 @@ function CardItem({ data }) {
         
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Verkaufspreis: </strong> 
-       {(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF
+      <p><strong>Verkaufspreis: </strong>{' '} 
+       {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'} 
       </p>
-      <p><strong>rpm </strong>{data.rpm}</p>
+      <p><strong>rpm </strong>{' '}
+      {data.rpm ? `${data.rpm}` : 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Lautstärke:</strong> {data.noise_level} dB</p>
-          <p><strong>Farbe:</strong> {data.color} </p>
+          <p><strong>Lautstärke:</strong>{' '} 
+          {data.noise_level ? `${data.noise_level} dB` : 'n/A'}</p>
+          <p><strong>Farbe:</strong>{''}
+           {data.color ? `${data.color}` : 'n/A'} </p>
           <p>
             <strong>Grösse:</strong>{' '}
-            {data.size && data.size !== 'null' ? data.size : 'Keine integrierte Grafik'}
+            {data.size ? `${data.size} mm` : 'n/A'}
           </p>
           
           </>

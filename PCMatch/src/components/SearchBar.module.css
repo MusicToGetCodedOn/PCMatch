@@ -1,0 +1,23 @@
+.SearchBar{
+background-color: var(--color-bg-primary);
+border: none;
+border-radius: 10px;
+font-size: large;
+text-decoration: none;
+padding-left: 1%;
+padding-right: 1%;
+padding-top: 1%;
+padding-bottom: 1%;
+color: var(--color-text-light);
+transition: .4s;
+}
+
+.SearchBar:focus{
+    outline: none;
+    background-color: var(--color-highlight);
+    box-shadow: 0 0 8px var(--color-accent-soft);
+    transition: .4s;
+}
+.SearchBar::placeholder{
+    color: var(--color-text-muted);
+}

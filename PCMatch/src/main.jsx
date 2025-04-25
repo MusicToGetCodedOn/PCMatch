@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <OsRoute/>
       },
       {
-        path: '/products/powersupplys',
+        path: '/products/powersupplies',
         element: <PowerSupplyRoute />
       },
       {

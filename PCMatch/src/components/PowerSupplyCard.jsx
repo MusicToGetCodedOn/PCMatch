@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import Graphicscards from '../data/video-card.json';
+import Powersupplies from '../data/power-supply.json';
 import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
 
-export default function GpuCard() {
+export default function PowerSupplyCard() {
   const [visibleCards, setVisibleCards] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
   
-  const GraphicscardsWithIds = Graphicscards.map((card, index) => ({
+  const PowersuppliesWithIds = Powersupplies.map((card, index) => ({
     ...card,
     id: index + 1
   }));
@@ -24,15 +24,15 @@ export default function GpuCard() {
     });
   };
 
-  const filteredCards = GraphicscardsWithIds.filter(card =>
+  const filteredCards = PowersuppliesWithIds.filter(card =>
     card.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    card.chipset.toLowerCase().includes(searchQuery.toLowerCase())
+    card.type.toLowerCase().includes(searchQuery.toLowerCase())
   );
   
 
   return (
     <div>
-      <h2>Grafikkarten</h2>
+      <h2>Powersupplies</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
@@ -41,8 +41,8 @@ export default function GpuCard() {
       )}
 
       <div className={styles.Grid}> 
-        {filteredCards.slice(0, visibleCards).map((graphicscard) => (
-          <CardItem key={graphicscard.id} data={graphicscard} />
+        {filteredCards.slice(0, visibleCards).map((powersupplies) => (
+          <CardItem key={powersupplies.id} data={powersupplies} />
         ))}
       </div>
 
@@ -65,16 +65,15 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Chipset:</strong> {data.chipset || 'n/A'}</p>
       <p><strong>Verkaufspreis:</strong> {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}</p>
+      <p><strong>Typ:</strong> {data.type || 'n/A'}</p>
 
       {showMore && (
         <>
-          <p><strong>Speicher:</strong> {data.memory ? `${data.memory} GB` : 'n/A'}</p>
-          <p><strong>Standart Taktfrequenz:</strong> {data.core_clock ? `${data.core_clock} MHz` : 'n/A'}</p>
-          <p><strong>Übertaktet:</strong> {data.boost_clock ? `${data.boost_clock} MHz` : 'n/A'}</p>
+          <p><strong>Zertifikat:</strong> {data.efficiency ? `${data.efficiency}` : 'n/A'}</p>
+          <p><strong>Watt:</strong> {data.wattage ? `${data.wattage} W` : 'n/A'}</p>
+          <p><strong>Modular:</strong> {data.modular ? `${data.modular}` : 'n/A'}</p>
           <p><strong>Farbe:</strong> {data.color || 'n/A'}</p>
-          <p><strong>Länge:</strong> {data.length ? `${data.length} mm` : 'n/A'}</p>
         </>
       )}
 
