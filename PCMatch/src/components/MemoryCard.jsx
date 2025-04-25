@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import Cases from '../data/case.json';
+import Memory from '../data/memory.json';
 import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
 
-export default function CaseCard() {
+export default function MemoryCard() {
     const [visibleCards, setVisibleCards] = useState(12);
     const [searchQuery, setSearchQuery] = useState("");
       
-      const CasesWithIds = Cases.map((card, index) => ({
+      const MemoryWithIds = Memory.map((card, index) => ({
         ...card,
         id: index + 1
       }));
@@ -24,33 +24,31 @@ export default function CaseCard() {
       });
     };
 
-    const filteredCards = CasesWithIds.filter(card =>
-      card.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      card.type.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredCards = MemoryWithIds.filter(card =>
+        card.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     return (
         <div>
-          <h2>Gehäuse</h2>
+          <h2>RAM</h2>
+
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
           {filteredCards.length === 0 && searchQuery && (
         <p className={styles.noResults}>Wir haben wohl nichts, was "{searchQuery}" heißt.</p>
       )}
-        
-      <div className={styles.Grid}> 
-              {filteredCards.slice(0, visibleCards).map((graphicscard) => (
-                <CardItem key={graphicscard.id} data={graphicscard} />
-              ))}
-            
-   
-        </div>
+
+        <div className={styles.Grid}> 
+                        {filteredCards.slice(0, visibleCards).map((memory) => (
+                          <CardItem key={memory.id} data={memory} />
+                        ))}
+                      </div>
     
           {visibleCards < filteredCards.length && (
-            <Button onClick={loadMore} className={styles.loadMoreBtn}>
-              mehr anzeigen
-            </Button>
-          )}
+                      <Button onClick={loadMore} className={styles.loadMoreBtn}>
+                        mehr anzeigen
+                      </Button>
+                    )}
            <Button onClick={scrollToTop} className={styles.scrollToTopBtn}>
                   Nach oben
                 </Button>
@@ -65,27 +63,43 @@ function CardItem({ data }) {
   return (
     <article className={styles.Card}>
       <h3>{data.name}</h3>
-      <p><strong>Gehäuse Typ: </strong>{' '}
-      {data.type ? `${data.type}` : 'n/A'}</p>
       <p><strong>Verkaufspreis: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}
       </p>
+      <p>
+  <strong>Anzahl:</strong>{' '}
+  {Array.isArray(data.modules) && data.modules.length === 2
+    ? `${data.modules[0]}x ${data.modules[1]} GB`
+    : 'n/A'}
+</p>
+      
 
       {showMore && (
         <>
-          <p><strong>Side Panel:</strong>{' '}
-          {data.side_panel ? `${data.side_panel}` : 'n/A'}</p>
-          <p><strong>Aussen Volumen:</strong>{' '}
-          {data.external_volume ? `${data.external_volume} cm/3` : 'n/A'}</p>
-          <p><strong>3.5" Laufwerkschäfte:</strong>{' '}
-          {data.internal_35_bays ? `${data.internal_35_bays}x` : 'n/A'}</p>
-          <p><strong>Farbe:</strong>{''}
-          {data.color ? `${data.color}` : 'n/A'}</p>
+        <p>
+  <strong>Speed:</strong>{' '}
+  {Array.isArray(data.speed) && data.speed.length === 2
+    ? `DDR${data.speed[0]}-RAM`
+    : 'n/A'}
+</p>
+<p>
+  <strong>Taktfrequenz:</strong>{' '}
+  {Array.isArray(data.speed) && data.speed[1]
+    ? `${data.speed[1]} MHz`
+    : 'n/A'}
+</p>
+          <p>
+  <strong>Preis pro GB: </strong>{' '}
+  {data.price_per_gb ? `${(data.price_per_gb * 0.83 ).toFixed(2)} CHF` : 'n/A'} 
+</p>
+          <p><strong>FWL:</strong>{' '}
+          {data.first_word_latency ? `${data.first_word_latency} ns` : 'n/A'}</p>
+          <p><strong>CAS Latency:</strong>{' '}
+          {data.cas_latency ? `${data.cas_latency}` : 'n/A'}</p>
+          
         </>
       )}
-      <Button onClick={() => window.open("https://www.digitec.ch/de/s1/tag/gehaeuse-524", "_blank") }>
-  Kaufen
-</Button>
+
       <Button onClick={() => setShowMore(prev => !prev)} className={styles.loadMoreBtn}>
         {showMore ? 'Weniger anzeigen' : 'Mehr anzeigen'}
       </Button>
