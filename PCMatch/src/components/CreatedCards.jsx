@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Card.module.css"; // Optional: Styling für die Karten
 import completebuild from '../assets/completebuild.png';
+import style from './CreatedCards.module.css';
+import ConfirmModal from "./ConfirmModal";
 
 const CreatedCards = () => {
     const [savedBuilds, setSavedBuilds] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [deleteIndex, setDeleteIndex] = useState(null);
+    const [deleteAll, setDeleteAll] = useState(false);
 
     useEffect(() => {
         // Lade die Builds aus dem localStorage
@@ -25,29 +30,29 @@ const CreatedCards = () => {
         return <p>No saved builds found.</p>;
     }
 
+    const handleDelete = (index) => {
+        const updatedBuilds = savedBuilds.filter((_, i) => i !== index);
+        setSavedBuilds(updatedBuilds);
+        localStorage.setItem("pcBuildData", JSON.stringify(updatedBuilds));
+    };
+    
+    const handleClearAll = () => {
+        localStorage.removeItem("pcBuildData");
+        setSavedBuilds([]);
+    };
     return (
         <div>
             <h2>Your Saved PC Builds</h2>
               {/* Button zum Leeren des localStorage */}
               <button
-                onClick={() => {
-                    if (window.confirm("Are you sure you want to delete all saved builds?")) {
-                        localStorage.removeItem("pcBuildData"); // Löscht nur die Builds
-                        setSavedBuilds([]); // Aktualisiert den Zustand
-                    }
-                }}
-                style={{
-                    marginBottom: "1rem",
-                    padding: "0.5rem 1rem",
-                    backgroundColor: "#ff4d4d",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                }}
-            >
-                Clear Saved Builds
-            </button>
+  className={style.deletebutton}
+  onClick={() => {
+    setDeleteAll(true);
+    setShowModal(true);
+  }}
+>
+  Clear Saved Builds
+</button>
             <div className={styles.Grid}>
                 {savedBuilds.map((build, index) => (
                     <div key={index} className={styles.Card}>
@@ -57,9 +62,42 @@ const CreatedCards = () => {
                                 <strong>{key}:</strong> {value || "Skipped"}
                             </p>
                         ))}
+                        <button
+  onClick={() => {
+    setDeleteIndex(index);
+    setShowModal(true);
+  }}
+  className={style.deletebutton}
+>
+  Delete
+</button>
                     </div>
                 ))}
             </div>
+            {showModal && (
+  <ConfirmModal
+    message={
+      deleteAll
+        ? "Are you sure you want to delete all saved builds?"
+        : "Are you sure you want to delete this build?"
+    }
+    onConfirm={() => {
+      if (deleteAll) {
+        handleClearAll();
+      } else {
+        handleDelete(deleteIndex);
+      }
+      setShowModal(false);
+      setDeleteAll(false);
+      setDeleteIndex(null);
+    }}
+    onCancel={() => {
+      setShowModal(false);
+      setDeleteAll(false);
+      setDeleteIndex(null);
+    }}
+  />
+)}
         </div>
     );
 };
