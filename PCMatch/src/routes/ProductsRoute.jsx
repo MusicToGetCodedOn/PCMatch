@@ -21,6 +21,21 @@ export default function ProductsRoute(){
 
     return (
         <div>
+            <div className={styles.grid}>
+  <a href="/products/casefans"><img src={cpucooler} alt="Cpu Kühler"/>Lüfter</a>
+  <a href="/products/cases">Gehäuse</a>
+  <a href="/products/cpucoolers">Cpu Kühler</a>
+  <a href="/products/cpus">Cpu's</a>
+  <a href="/products/extdrives">External Drives</a>
+  <a href="/products/intdrives">Internal Drives</a>
+  <a href="/products/memory">Arbeitsspeicher</a>
+  <a href="/products/motherboards">Motherboards</a>
+  <a href="/products/os">Betriebssystem</a>
+  <a href="/products/powersupplys">Netzteile</a>
+  <a href="/products/videocards">Grafikkarten</a>
+  <a href="/products/wirednetworkcards">Wired Networkcards</a>
+  <a href="/products/wirelessnetworkcards">Wireless Networkcards</a>
+</div>
       <h2>Produkte</h2>
       <input
                 type="text"
