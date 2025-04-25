@@ -32,7 +32,7 @@ export default function CasefanCard() {
 
   return (
     <div>
-      <h2>Fans</h2>
+      <h2 id="fans">Fans</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

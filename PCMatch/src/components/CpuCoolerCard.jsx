@@ -31,7 +31,7 @@ export default function CpuCoolerCard() {
 
   return (
     <div>
-        <h2>CPU Coolers</h2>
+        <h2 id="cpucoolers">CPU Coolers</h2>
 
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

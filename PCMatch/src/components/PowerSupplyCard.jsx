@@ -32,7 +32,7 @@ export default function PowerSupplyCard() {
 
   return (
     <div>
-      <h2>Powersupplies</h2>
+      <h2 id="powersupplies">Powersupplies</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

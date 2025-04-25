@@ -31,7 +31,7 @@ export default function MotherboardCard() {
   );
   return (
     <div>
-      <h2>Motherboards</h2>
+      <h2 id="motherboards">Motherboards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

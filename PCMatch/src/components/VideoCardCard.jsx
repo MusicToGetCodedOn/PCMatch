@@ -32,7 +32,7 @@ export default function GpuCard() {
 
   return (
     <div>
-      <h2>Graphics Cards</h2>
+      <h2 id="Gpu's">Graphics Cards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

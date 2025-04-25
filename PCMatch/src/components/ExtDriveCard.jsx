@@ -31,7 +31,7 @@ export default function ExtDriveCard() {
     
     return (
         <div>
-          <h2>External Storage</h2>
+          <h2 id="extdrives">External Storage</h2>
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

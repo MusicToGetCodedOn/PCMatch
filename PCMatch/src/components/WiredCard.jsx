@@ -32,7 +32,7 @@ export default function WiredNtkCard() {
 
   return (
     <div>
-      <h2>Wired Network Cards</h2>
+      <h2 id="wirednetworkcards">Wired Network Cards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

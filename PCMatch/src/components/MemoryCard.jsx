@@ -29,7 +29,7 @@ export default function MemoryCard() {
     );
     return (
         <div>
-          <h2>Memory</h2>
+          <h2 id="memory">Memory</h2>
 
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />

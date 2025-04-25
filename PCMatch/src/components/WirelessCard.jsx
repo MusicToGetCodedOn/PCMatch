@@ -32,7 +32,7 @@ export default function WirelessNtkCard() {
 
   return (
     <div>
-      <h2>Wireless Network Cards</h2>
+      <h2 id='wirelessnetworkcards'>Wireless Network Cards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

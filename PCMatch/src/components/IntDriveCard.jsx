@@ -30,7 +30,7 @@ export default function IntDriveCard() {
     );
     return (
         <div>
-          <h2>Internal Storage</h2>
+          <h2 id="intdrives">Internal Storage</h2>
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

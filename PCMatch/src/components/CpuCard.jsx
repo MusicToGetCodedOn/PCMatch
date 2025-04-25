@@ -32,7 +32,7 @@ export default function CpuCard() {
 
   return (
     <div>
-        <h2>Processors</h2>
+        <h2 id="cpu's">Processors</h2>
 
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

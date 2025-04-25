@@ -30,7 +30,7 @@ export default function CaseCard() {
     );
     return (
         <div>
-          <h2>Cases</h2>
+          <h2  id="cases">Cases</h2>
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
