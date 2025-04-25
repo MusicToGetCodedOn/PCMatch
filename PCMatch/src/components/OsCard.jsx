@@ -66,6 +66,7 @@ function CardItem({ data, handleNext }) {
 
   return (
     <article className={styles.Card} onClick={() => handleNext(data)}>
+      <p>Test Fix</p>
       <img src={os} />
       <h3>{data.name}</h3>
       <p><strong>Retailprice: </strong>{' '}
