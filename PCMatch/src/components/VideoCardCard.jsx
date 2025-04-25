@@ -3,8 +3,8 @@ import Graphicscards from '../data/video-card.json';
 import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
-import videocard from '../assets/videocard.png';
 
+import videocard from '../assets/videocard.png';
 export default function GpuCard({handleNext}) {
   const [visibleCards, setVisibleCards] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,7 +33,7 @@ export default function GpuCard({handleNext}) {
 
   return (
     <div>
-      <h2 id="Gpu's">Graphics Cards</h2>
+      <h2 id="gpu's">Graphics Cards</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 

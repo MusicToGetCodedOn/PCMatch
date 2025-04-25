@@ -1,8 +1,10 @@
 .Grid {
-    display: grid;
-    gap: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* gap: 1.5rem;
     grid-template-columns: repeat(3, 1fr);
-    padding: 2rem 1rem;
+    padding: 2rem 1rem; */
   }
 .Card{
     border: purple, solid;
@@ -12,6 +14,15 @@
     padding: 5%;
     transition: .4S;
     
+}
+.SubmittedCard{
+  border: purple, solid;
+
+  border-radius: 10px;
+  margin-bottom: 5%;
+  padding: 5%;
+  transition: .4S;
+  
 }
 
 button{
@@ -26,6 +37,7 @@ button{
   cursor: pointer;
   margin-top: 1rem;
   transition: .4s;
+
 }
 
 .loadMoreBtn:hover {
@@ -42,6 +54,7 @@ button{
   cursor: pointer;
   margin-top: 1rem;
   transition: .4s;
+  margin-left: 2%;
 }
 
 .showMoreBtn:hover {

@@ -8,16 +8,16 @@ import os from '../assets/os.png';
 export default function OsCard({handleNext}) {
   const [visibleCards, setVisibleCards] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
-    
+
     const OsWithIds = Os.map((card, index) => ({
       ...card,
       id: index + 1
     }));
-  
+
   const loadMore = () => {
     setVisibleCards(prev => prev + 12); 
   };
-  
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -31,7 +31,7 @@ export default function OsCard({handleNext}) {
   );
   return (
     <div>
-      <h2>Operating systems</h2>
+      <h2 id='os'>Operating systems</h2>
 
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
@@ -66,7 +66,6 @@ function CardItem({ data, handleNext }) {
 
   return (
     <article className={styles.Card} onClick={() => handleNext(data)}>
-      <p>Test Fix</p>
       <img src={os} />
       <h3>{data.name}</h3>
       <p><strong>Retailprice: </strong>{' '}
@@ -79,7 +78,7 @@ function CardItem({ data, handleNext }) {
         <>
           <p><strong>Max Memory:</strong>{' '}
           {data.max_memory ? `${data.max_memory} GB` : 'n/A'} </p>
-          
+
         </>
       )}
 
@@ -87,7 +86,7 @@ function CardItem({ data, handleNext }) {
         {showMore ? 'Show less' : 'Show more'}
       </Button>
 
-      
+
     </article>
   );
 }

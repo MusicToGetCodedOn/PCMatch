@@ -90,14 +90,15 @@ const BuildForm = () => {
             <div>
               <h2 style={{ padding: "1rem" }}>Summary</h2>
               
-              <div className={styles.Card} style={{ maxWidth: "800px", margin: "0 auto" }}>
+              <div className={styles.SubmittedCard}>
                 {steps && steps.map((step, index) => (
-                  <div key={step.id} style={{ marginBottom: "1rem" }}>
+                  <div key={step.id}>
                     <strong>{step.label}:</strong> {formData[step.id] || <em>Skipped</em>}
-                    <div>
-                      <button onClick={() => handleEdit(index)} className={styles.showMoreBtn} style={{ marginTop: "0.5rem" }}>
+                    <button onClick={() => handleEdit(index)} className={styles.showMoreBtn} style={{ marginTop: "0.5rem" }}>
                         Edit
                       </button>
+                    <div>
+                      
                     </div>
                   </div>
                 ))}
