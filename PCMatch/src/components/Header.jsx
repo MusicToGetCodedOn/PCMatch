@@ -53,8 +53,8 @@ export default function Header() {
           <a href="/products/intdrives"><img src={intdrives} />Internal Drives</a>
           <a href="/products/memory"><img src={memory} />Memory</a>
           <a href="/products/motherboards"><img src={motherboard} />Motherboards</a>
-          <a href="/products/powersupplies"><img src={powersupply} />Netzteile</a>
-          <a href="/products/videocards"><img src={videocard} />Grafikkarten</a>
+          <a href="/products/powersupplies"><img src={powersupply} />Powersupplies</a>
+          <a href="/products/videocards"><img src={videocard} />GPU's</a>
           <a href="/products/wirednetworkcards"><img src={wiredcard} />Wired Networkcards</a>
           <a href="/products/wirelessnetworkcards"><img src={wirelesscard} />Wireless Networkcards</a>
         </div>

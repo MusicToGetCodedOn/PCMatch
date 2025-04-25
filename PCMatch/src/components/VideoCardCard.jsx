@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
 
-export default function GpuCard() {
+export default function GpuCard({handleNext}) {
   const [visibleCards, setVisibleCards] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
   
@@ -42,7 +42,7 @@ export default function GpuCard() {
 
       <div className={styles.Grid}> 
         {filteredCards.slice(0, visibleCards).map((graphicscard) => (
-          <CardItem key={graphicscard.id} data={graphicscard} />
+          <CardItem key={graphicscard.id} data={graphicscard} handleNext={handleNext} />
         ))}
       </div>
 
@@ -59,11 +59,11 @@ export default function GpuCard() {
   );
 }
 
-function CardItem({ data }) {
+function CardItem({ data, handleNext }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <article className={styles.Card}>
+    <article className={styles.Card} onClick={() => handleNext(data)}>
       <h3>{data.name}</h3>
       <p><strong>Chipset:</strong> {data.chipset || 'n/A'}</p>
       <p><strong>Retailprice:</strong> {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}</p>

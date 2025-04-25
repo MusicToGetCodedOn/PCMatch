@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
 
-export default function CaseCard() {
+export default function CaseCard({handleNext}) {
     const [visibleCards, setVisibleCards] = useState(12);
     const [searchQuery, setSearchQuery] = useState("");
       
@@ -40,7 +40,7 @@ export default function CaseCard() {
         
       <div className={styles.Grid}> 
               {filteredCards.slice(0, visibleCards).map((graphicscard) => (
-                <CardItem key={graphicscard.id} data={graphicscard} />
+                <CardItem key={graphicscard.id} data={graphicscard} handleNext={handleNext}/>
               ))}
             
    
@@ -59,11 +59,11 @@ export default function CaseCard() {
 }
 
 
-function CardItem({ data }) {
+function CardItem({ data, handleNext }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <article className={styles.Card}>
+    <article className={styles.Card} onClick={() => handleNext(data)}>
       <h3>{data.name}</h3>
       <p><strong>Case type: </strong>{' '}
       {data.type ? `${data.type}` : 'n/A'}</p>

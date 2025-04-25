@@ -5,7 +5,7 @@ import Button from './Button';
 import SearchBar from './SearchBar';
 
 
-export default function CasefanCard() {
+export default function CasefanCard({handleNext}) {
   const [visibleCards, setVisibleCards] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
     
@@ -42,7 +42,7 @@ export default function CasefanCard() {
 
         <div className={styles.Grid}> 
                 {filteredCards.slice(0, visibleCards).map((casefan) => (
-                  <CardItem key={casefan.id} data={casefan} />
+                  <CardItem key={casefan.id} data={casefan} handleNext={handleNext}/>
                 ))}
               </div>
 
@@ -60,14 +60,14 @@ export default function CasefanCard() {
 }
 
 // Unterkomponente für jede einzelne Karte
-function CardItem({ data }) {
+function CardItem({ data, handleNext }) {
   const [showMore, setShowMore] = useState(false);
 
  
 
 
   return (
-    <article className={styles.Card}>
+    <article className={styles.Card} onClick={() => handleNext(data)}>
       <h3>{data.name}</h3>
       <p><strong>Retailprice: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}

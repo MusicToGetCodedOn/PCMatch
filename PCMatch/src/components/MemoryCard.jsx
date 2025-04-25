@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
 
-export default function MemoryCard() {
+export default function MemoryCard({handleNext}) {
     const [visibleCards, setVisibleCards] = useState(12);
     const [searchQuery, setSearchQuery] = useState("");
       
@@ -40,7 +40,7 @@ export default function MemoryCard() {
 
         <div className={styles.Grid}> 
                         {filteredCards.slice(0, visibleCards).map((memory) => (
-                          <CardItem key={memory.id} data={memory} />
+                          <CardItem key={memory.id} data={memory} handleNext={handleNext}/>
                         ))}
                       </div>
     
@@ -57,11 +57,11 @@ export default function MemoryCard() {
 }
 
 
-function CardItem({ data }) {
+function CardItem({ data, handleNext }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <article className={styles.Card}>
+    <article className={styles.Card} onClick={() => handleNext(data)}>
       <h3>{data.name}</h3>
       <p><strong>Retailprice: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}

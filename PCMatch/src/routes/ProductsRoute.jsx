@@ -40,7 +40,6 @@ export default function ProductsRoute(){
     return (
         <div>
             <div className={styles.grid}>
-
           <a href="#os"><img src={os} />OS</a>
           <a href="#fans"><img src={casefan} /> Fans</a>
           <a href="#cases"><img src={shell} />Cases</a>
@@ -70,6 +69,7 @@ export default function ProductsRoute(){
             <PowerSupplyCard/>
             <WiredNtkCard/>
             <WirelessNtkCard/>
+
             
         </div>
     )

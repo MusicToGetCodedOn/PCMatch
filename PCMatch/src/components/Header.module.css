@@ -99,6 +99,7 @@
     grid-template-columns: repeat(7, minmax(160px, 1fr));
     gap: 1rem;
     justify-content: center;
+    padding-left: 2%;
 }
 
 .grid a {
