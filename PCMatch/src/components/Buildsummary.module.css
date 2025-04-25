@@ -13,15 +13,16 @@
     margin-bottom: 5%;
     padding: 5%;
     transition: .4S;
+
     
 }
 .SubmittedCard{
   border: purple, solid;
-
   border-radius: 10px;
   margin-bottom: 5%;
   padding: 5%;
   transition: .4S;
+  
   
 }
 

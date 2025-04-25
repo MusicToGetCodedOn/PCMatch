@@ -48,7 +48,7 @@ const CreatedCards = () => {
             >
                 Clear Saved Builds
             </button>
-            <div className={styles.cardContainer}>
+            <div className={styles.Grid}>
                 {savedBuilds.map((build, index) => (
                     <div key={index} className={styles.Card}>
                         <img src={completebuild} />
