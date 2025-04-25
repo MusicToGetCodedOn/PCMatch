@@ -3,6 +3,7 @@ import WirelessCard from '../data/wired-network-card.json';
 import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
+import wirelesscard from '../assets/wirelesscard.png';
 
 export default function WirelessNtkCard({handleNext}) {
   const [visibleCards, setVisibleCards] = useState(12);
@@ -64,6 +65,7 @@ function CardItem({ data, handleNext }) {
 
   return (
     <article className={styles.Card} onClick={() => handleNext(data)}>
+      <img src={wirelesscard} />
       <h3>{data.name}</h3>
       <p><strong>Retailprice:</strong> {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}</p>
       <p><strong>Protocol:</strong> {data.protocol || 'n/A'}</p>

@@ -3,6 +3,7 @@ import CaseFans from '../data/case-fan.json';
 import styles from './Card.module.css'
 import Button from './Button';
 import SearchBar from './SearchBar';
+import casefan from '../assets/case_fan.png';
 
 
 export default function CasefanCard({handleNext}) {
@@ -68,6 +69,7 @@ function CardItem({ data, handleNext }) {
 
   return (
     <article className={styles.Card} onClick={() => handleNext(data)}>
+      <img src={casefan} />
       <h3>{data.name}</h3>
       <p><strong>Retailprice: </strong>{''}
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'}

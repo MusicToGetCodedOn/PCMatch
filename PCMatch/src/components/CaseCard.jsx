@@ -3,6 +3,7 @@ import Cases from '../data/case.json';
 import styles from './Card.module.css';
 import Button from './Button';
 import SearchBar from './SearchBar';
+import shell from '../assets/case.png';
 
 export default function CaseCard({handleNext}) {
     const [visibleCards, setVisibleCards] = useState(12);
@@ -64,6 +65,7 @@ function CardItem({ data, handleNext }) {
 
   return (
     <article className={styles.Card} onClick={() => handleNext(data)}>
+      <img src={shell} />
       <h3>{data.name}</h3>
       <p><strong>Case type: </strong>{' '}
       {data.type ? `${data.type}` : 'n/A'}</p>

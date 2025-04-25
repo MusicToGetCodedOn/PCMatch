@@ -3,6 +3,7 @@ import Cooler from '../data/cpu-cooler.json';
 import styles from './Card.module.css'
 import Button from './Button';
 import SearchBar from './SearchBar';
+import cpucooler from '../assets/cpucooler.png';
 
 
 export default function CpuCoolerCard({handleNext}) {
@@ -65,6 +66,7 @@ function CardItem({ data, handleNext }) {
 
         
     <article className={styles.Card} onClick={() => handleNext(data)}>
+      <img src={cpucooler} />
       <h3>{data.name}</h3>
       <p><strong>Retailprice: </strong>{' '} 
        {data.price ? `${(Math.round(data.price * 0.83 / 0.05) * 0.05).toFixed(2)} CHF` : 'n/A'} 
