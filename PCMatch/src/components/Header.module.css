@@ -1,5 +1,18 @@
-/* Header Styling bleibt unverändert */
-.header {
+/* Header.module.css */
+:root {
+    --color-bg-primary: #1d1d1e;
+    --color-bg-surface: #242424;
+    --color-accent-main: #cf1dd8;
+    --color-accent-secondary: #b025eb;
+    --color-accent-soft: #9a65c7;
+    --color-accent-alt: #1f66e5;
+    --color-highlight: #7720e9;
+    --color-text-light: #eae9f2;
+    --color-text-muted: #72677e;
+  }
+  
+  /* Header container - updated to match your specifications */
+  .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,173 +27,297 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     box-sizing: border-box;
-}
-
-.headerTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #b025eb;
-    cursor: pointer;
-}
-
-.homeButton {
-
-    background-color: #b025eb;
-    color: rgb(43, 42, 42);
-    width: 84.61px;
+  }
+  
+  /* Logo/Title styling */
+  .headerTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
     text-decoration: none;
-    text-align: center;
-    padding-top: 2%;
-    border-radius: 6px;
-    margin-right: 5%;
-    transition: 0.4s;
-    padding-bottom: 2%;
-}
-
-
-.homeButton:hover {
-    background-color: #cf1dd8;
-    transition: 0.4s;
-    transform: scale(1.05);
-}
-
-.nav {
+    background: linear-gradient(90deg, var(--color-accent-main), var(--color-accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Fix for the navigation div */
+  .navDiv {
     display: flex;
-    justify-content: space-evenly;
-    width: 45%;
-}
-
-/* Button Styling für 'Products' */
-.productsButton {
-    background-color: #b025eb;
-    color: rgb(43, 42, 42);
-    padding: 0.5rem 1rem;
-    margin: 0;
-    text-decoration: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-    height: 50px;
-    border: none;
-    
-}
-
-.productsButton:hover {
-    background-color: #cf1dd8;
-    transition: 0.3s;
-    transform: scale(1.05);
-    border: none;
-}
-
-/* Das Grid, das hinter dem Header hervorfährt */
-.productGrid {
-    background-color: #282b34; /* Etwas hellere Farbe als der Header */
-    width: 100%;
-    padding: 20px 0;
-    position: fixed;
-    top: 60px; /* Direkt unter dem Header */
-    left: 0;
-    right: 0;
-    opacity: 0;    /* Start unsichtbar */
-    transform: translateY(-100%); /* Start außerhalb des Bildschirms */
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Sanfte Transition */
-    z-index: 999;
-}
-
-/* Wenn das Produktmenü geöffnet ist */
-.productGrid.open {
-    opacity: 1;
-    transform: translateY(0); /* Lässt das Grid nach unten fahren */
-}
-
-/* Grid Styling */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(160px, 1fr));
     gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Navigation container */
+  .nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Common button styles */
+  .homeButton{
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding-left: 2%;
-}
-
-.grid a {
+  }
+  .productsButton {
+    margin-top: 4%;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+  }
+  
+  /* Home button styling */
+  .homeButton {
+    color: var(--color-text-light);
+    background-color: var(--color-bg-surface);
+    border: 1px solid rgba(154, 101, 199, 0.3);
+  }
+  
+  .homeButton:hover {
+    background-color: rgba(154, 101, 199, 0.1);
+    border-color: rgba(154, 101, 199, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  /* Products button styling */
+  .productsButton {
+    color: var(--color-text-light);
+    background: linear-gradient(90deg, var(--color-accent-main), var(--color-accent-secondary));
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(207, 29, 216, 0.3);
+  }
+  
+  .productsButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(207, 29, 216, 0.5);
+  }
+  
+  .productsButton:active {
+    transform: translateY(0);
+  }
+  
+  /* Product grid styling - adjusted top position to account for 60px header height */
+  .productGrid {
+    position: fixed;
+    top: 60px; /* Match the header height */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-surface);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    z-index: 999; /* Just below header */
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    border-bottom: 1px solid rgba(154, 101, 199, 0.2);
+    overflow: hidden;
+    max-height: 0;
+  }
+  
+  .productGrid.open {
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  /* Grid layout */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Grid item styling */
+  .grid a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 160px;
-    height: 160px;
-    background-color: #2b2d3a;
-    border: 3px solid transparent;
-    border-radius: 10px;
-    text-align: center;
+    justify-content: center;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.3s, border 0.3s, transform 0.3s;
-}
-
-.grid a:hover {
-    border: 3px solid #9b59b6;
-    background-color: #343649;
-    transform: scale(1.03);
-}
-
-.grid a img {
-    width: 80px;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-}
-
-/* Das Verschieben des Inhalts */
-.mainContent {
-    transition: margin-top 0.5s ease-out; /* Sanfte Transition */
-    padding-top: 60px; /* Platz für den Header */
-}
-
-/* Wenn das Grid geöffnet ist, verschiebe den Inhalt */
-.mainContent.shifted {
-    margin-top: 360px; /* Der Abstand, den das Grid nach unten verschiebt */
-}
-
-/* Hamburger und mobile Styles */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-        height: auto;
-    }
-
+    color: var(--color-text-light);
+    background-color: rgba(36, 36, 36, 0.8);
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid rgba(154, 101, 199, 0.1);
+    height: 120px;
+  }
+  
+  .grid a:hover {
+    transform: translateY(-5px);
+    background-color: rgba(154, 101, 199, 0.1);
+    border-color: rgba(154, 101, 199, 0.3);
+    box-shadow: 0 5px 15px rgba(154, 101, 199, 0.2);
+  }
+  
+  /* Browse All link special styling */
+  .grid a:first-child {
+    background: linear-gradient(135deg, rgba(207, 29, 216, 0.1), rgba(31, 102, 229, 0.1));
+    border: 1px solid rgba(207, 29, 216, 0.3);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .grid a:first-child:hover {
+    background: linear-gradient(135deg, rgba(207, 29, 216, 0.2), rgba(31, 102, 229, 0.2));
+  }
+  
+  /* Product icons */
+  .grid a img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+  }
+  
+  .grid a:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Main content shifting - adjusted to account for fixed header */
+  .mainContent {
+    transition: margin-top 0.4s ease;
+    margin-top: 60px; /* Add space for the fixed header */
+  }
+  
+  .mainContent.shifted {
+    margin-top: 360px; /* 60px header + 300px for grid */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
     .nav {
-        display: none;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        width: 100%;
+      gap: 0.5rem;
     }
-
-    .nav.open {
-        display: flex;
-        background-color: #1d1d1e;
-        padding: 5%;
-        padding-right: 10%;
-        margin-top: 5.3%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 85%;
+  
+    .homeButton,
+    .productsButton {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
     }
-
-    .homeButton {
-        width: 100%;
-        text-align: center;
+  
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      padding: 1rem;
+      gap: 0.8rem;
     }
-
-    /* Show the Hamburger Icon */
-    .hamburger {
-        display: flex;
-        margin-left: 90%;
-        background-color: #1d1d1e;
+  
+    .grid a {
+      height: 100px;
+      padding: 0.8rem;
     }
-}
+  
+    .grid a img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  /* For very small screens */
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+  
+    .headerTitle {
+      font-size: 1.3rem;
+    }
+  
+    .homeButton,
+    .productsButton {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Animation for grid items */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .grid a {
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+  }
+  
+  /* Staggered animation for grid items */
+  .grid a:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  .grid a:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .grid a:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+  .grid a:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+  .grid a:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+  .grid a:nth-child(6) {
+    animation-delay: 0.3s;
+  }
+  .grid a:nth-child(7) {
+    animation-delay: 0.35s;
+  }
+  .grid a:nth-child(8) {
+    animation-delay: 0.4s;
+  }
+  .grid a:nth-child(9) {
+    animation-delay: 0.45s;
+  }
+  .grid a:nth-child(10) {
+    animation-delay: 0.5s;
+  }
+  .grid a:nth-child(11) {
+    animation-delay: 0.55s;
+  }
+  .grid a:nth-child(12) {
+    animation-delay: 0.6s;
+  }
+  .grid a:nth-child(13) {
+    animation-delay: 0.65s;
+  }
+  .grid a:nth-child(14) {
+    animation-delay: 0.7s;
+  }
+  
+  /* Add space below header for content */
+  body {
+    padding-top: 60px; /* Match header height */
+  }
+  

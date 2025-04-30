@@ -14,6 +14,7 @@ import extdrives from '../assets/ext_hard_drive.png';
 import os from '../assets/os.png';
 import wiredcard from '../assets/wiredcard.png';
 import wirelesscard from '../assets/wirelesscard.png';
+import { div } from 'framer-motion/client';
 
 export default function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
@@ -29,9 +30,10 @@ export default function Header() {
         <Link to="/" className={styles.headerTitle}>PCMatch</Link>
 
         <nav className={styles.nav}>
-          
+          <div className={styles.navDiv}>
             <Link to="/builder/" className={styles.homeButton}>Builder</Link>
             <Link to="/completedbuilds/" className={styles.homeButton}>Builds</Link>
+            </div>
         
           {/* Button für das Ausklappen des Produktsmenüs */}
           <button className={styles.productsButton} onClick={toggleProducts}>Products</button>

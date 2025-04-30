@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Button from "../components/Button"
+import './HomeRoute.module.css'
 
 export default function HomeRoute(){
     return (
