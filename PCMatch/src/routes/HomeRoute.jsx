@@ -4,7 +4,10 @@ import Button from "../components/Button"
 
 export default function HomeRoute() {
   return (
+
+    
     <main className={styles.mainContainer}>
+      <p>Test</p>
       <div className={styles.infoCard}>
         <h1 className={styles.title}>Welcome to our Homepage</h1>
         <p className={styles.description}>This is just an example Text!</p>
