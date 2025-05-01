@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from './Button';
 //Data imports
 import gpuData from "../data/video-card.json";
 import cpuData from "../data/cpu.json";
@@ -71,6 +72,7 @@ const BuildForm = () => {
     const [formData, setFormData] = useState({});
     const [buildName, setBuildName] = useState("");
     const navigateback = useNavigate();
+    const [isEditing, setIsEditing] = useState(false);
 
     // Funktion zum Zurückgehen
     const handleGoBack = () => {
@@ -180,14 +182,14 @@ const BuildForm = () => {
             </div>
             {/* GoBack-Button */}
             {currentStep > 0 && (
-                <button
+                <Button
                     onClick={handleGoBack}
                     className={styles.loadMoreBtn}
                 >
                     Go Back
-                </button>
+                </Button>
             )}
-            <button onClick={handleSkip} style={{ marginTop: "20px" }} className={styles.loadMoreBtn}>Skip</button>
+            <Button onClick={handleSkip} style={{ marginTop: "20px" }} className={styles.loadMoreBtn}>Skip</Button>
         </div>
     );
 };
