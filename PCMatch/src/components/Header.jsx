@@ -30,6 +30,7 @@ export default function Header() {
 
         <nav className={styles.nav}>
           <div className={styles.navDiv}>
+            <Link to="/slotmachine/" className={styles.homeButton}>PC-Slots</Link>
             <Link to="/builder/" className={styles.homeButton}>Builder</Link>
             <Link to="/completedbuilds/" className={styles.homeButton}>Builds</Link>
             </div>

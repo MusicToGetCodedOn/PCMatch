@@ -20,6 +20,7 @@ import PowerSupplyRoute from './routes/PowerSupplyRoute.jsx'
 import VideoCardRoute from './routes/VideoCardRoute.jsx'
 import WiredRoute from './routes/WiredRoute.jsx'
 import WirelessRoute from './routes/WirelessRoute.jsx'
+import SlotRoute from './routes/SlotRoute.jsx'
 
 
 const router = createBrowserRouter([
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: '/completedbuilds',
         element: <CompletedRoute />
+      },
+      {
+        path: '/slotmachine',
+        element: <SlotRoute />
       }
     ],
   },
