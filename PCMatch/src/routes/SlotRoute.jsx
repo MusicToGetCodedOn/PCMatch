@@ -1,5 +1,7 @@
+import SlotMachine from "../components/SlotMachine"
+
 export default function SlotRoute() {
     return <main>
-        <h2>SlotRoute</h2>
+        <SlotMachine />
     </main>
 }
