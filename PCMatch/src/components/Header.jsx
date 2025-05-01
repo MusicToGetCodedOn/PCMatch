@@ -14,7 +14,7 @@ import extdrives from '../assets/ext_hard_drive.png';
 import os from '../assets/os.png';
 import wiredcard from '../assets/wiredcard.png';
 import wirelesscard from '../assets/wirelesscard.png';
-import { div } from 'framer-motion/client';
+
 
 export default function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
