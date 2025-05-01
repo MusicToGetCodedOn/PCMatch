@@ -1,20 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom"
+import styles from "./HomeRoute.module.css"
 import Button from "../components/Button"
-import './HomeRoute.module.css'
 
-export default function HomeRoute(){
-    return (
-    <main>
-        <div className="info-card">
-            <h1>Welcome to our HomePage</h1>
-            <p>This is just an example Text!</p>
-            <Button><Link to="/builder/">Start your Build</Link> </Button>
-        </div>
-        <div>
-            <h1>Search through Products!</h1>
-            <p>This is not the Final Text!</p>
-            <Button><Link to="/products/">Show Products</Link> </Button>
-        </div>
-    </main> 
-    )
+export default function HomeRoute() {
+  return (
+    <main className={styles.mainContainer}>
+      <div className={styles.infoCard}>
+        <h1 className={styles.title}>Welcome to our Homepage</h1>
+        <p className={styles.description}>This is just an example Text!</p>
+       
+          <Link to="/builder/">
+          <Button>Start your Build</Button></Link>
+          
+      </div>
+      <div className={styles.card}>
+        <h1 className={styles.title}>Search through Products!</h1>
+        <p className={styles.description}>This is not the Final Text!</p>
+        <Link to="/products/"> <Button>
+          Show Products
+        </Button>
+        </Link>
+       </div>
+    </main>
+  )
 }

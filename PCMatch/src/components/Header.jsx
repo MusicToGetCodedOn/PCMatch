@@ -15,7 +15,6 @@ import os from '../assets/os.png';
 import wiredcard from '../assets/wiredcard.png';
 import wirelesscard from '../assets/wirelesscard.png';
 
-
 export default function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
 
@@ -34,7 +33,6 @@ export default function Header() {
             <Link to="/builder/" className={styles.homeButton}>Builder</Link>
             <Link to="/completedbuilds/" className={styles.homeButton}>Builds</Link>
             </div>
-        
           {/* Button für das Ausklappen des Produktsmenüs */}
           <button className={styles.productsButton} onClick={toggleProducts}>Products</button>
         </nav>
